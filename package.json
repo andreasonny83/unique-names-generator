@@ -1,0 +1,30 @@
+{
+  "name": "unique-names-generator",
+  "version": "1.0.1",
+  "description": "Generate unique and memorable names",
+  "engines": {
+    "node": ">=4"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "test": "npm run lint && jest",
+    "test:watch": "jest --watchAll"
+  },
+  "files": [
+    "index.js"
+  ],
+  "author": "AndreaSonny <andreasonny83@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:andreasonny83/unique-names-generator.git"
+  },
+  "devDependencies": {
+    "eslint": "^4.18.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jest": "^21.12.2",
+    "jest": "^22.4.0"
+  }
+}
