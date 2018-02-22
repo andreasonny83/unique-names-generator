@@ -1,5 +1,7 @@
 # Unique Names Generator
 
+> More than 21,000,000 name combinations
+
 ```sh
 $ npm i -S unique-names-generator
 ```
