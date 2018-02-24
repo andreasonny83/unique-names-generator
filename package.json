@@ -1,6 +1,6 @@
 {
   "name": "unique-names-generator",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Generate unique and memorable names",
   "engines": {
     "node": ">=4"
@@ -11,6 +11,10 @@
     "test:watch": "jest --watchAll"
   },
   "main" : "index.js",
+  "tags": [
+    "name-generator",
+    "unique-names"
+  ],
   "files": [
     "index.js",
     "lib/random-name-generator.js",

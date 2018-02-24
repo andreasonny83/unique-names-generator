@@ -3,10 +3,10 @@
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
 
-const adjectives = require('./lib/dictionaries/adjectives');
-const colors = require('./lib/dictionaries/colors');
-const animals = require('./lib/dictionaries/animals');
-const RandomNameGenerator = require('./lib/random-name-generator');
+const adjectives = require('./lib/dictionaries/adjectives.json');
+const colors = require('./lib/dictionaries/colors.json');
+const animals = require('./lib/dictionaries/animals.json');
+const uniqueNamesGenerator = require('./lib/unique-names-generator');
 
-module.exports.generate = (separator = '_') =>
-  RandomNameGenerator.generate(adjectives, colors, animals, separator);
+exports.generate = (separator = '_') =>
+  uniqueNamesGenerator.generate(adjectives, colors, animals, separator);
