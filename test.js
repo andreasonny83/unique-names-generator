@@ -1,6 +1,6 @@
 const x = require('./');
 
-describe('', () => {
+describe('unique-names-generator', () => {
   it('should generate a random name', () => {
     expect(x.generate()).toBeDefined();
   });
