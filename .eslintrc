@@ -2,6 +2,17 @@
   "env": {
     "node": true
   },
-  "plugins": ["jest"],
-  "extends": ["plugin:jest/recommended", "airbnb-base"]
+  "plugins": [
+    "jest",
+    "flowtype"
+  ],
+  "extends": [
+    "babel",
+    "plugin:jest/recommended",
+    "airbnb-base"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 7,
+    "sourceType": "module"
+  }
 }

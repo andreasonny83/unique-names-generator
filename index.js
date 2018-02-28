@@ -6,7 +6,10 @@
 const adjectives = require('./lib/dictionaries/adjectives.json');
 const colors = require('./lib/dictionaries/colors.json');
 const animals = require('./lib/dictionaries/animals.json');
-const uniqueNamesGenerator = require('./lib/unique-names-generator');
+const UniqueNamesGenerator = require('./lib/unique-names-generator');
 
-exports.generate = (separator = '_') =>
-  uniqueNamesGenerator.generate(adjectives, colors, animals, separator);
+exports.generate = (separator = '_') => {
+  const uniqueNamesGenerator = new UniqueNamesGenerator(adjectives, colors, animals);
+
+  return uniqueNamesGenerator.generate(separator);
+};

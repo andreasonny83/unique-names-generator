@@ -1,4 +1,4 @@
-const x = require('./');
+import * as x from './';
 
 describe('unique-names-generator', () => {
   it('should generate a random name', () => {
