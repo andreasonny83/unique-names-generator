@@ -10,7 +10,7 @@
     "test": "npm run lint && jest",
     "test:watch": "jest --watchAll",
     "build": "rimraf lib/ && babel ./src --out-dir lib/ --ignore **/*.test.js --copy-files",
-    "publish": "npm run build && npm publish"
+    "publish": "npm run build"
   },
   "main": "index.js",
   "tags": [
