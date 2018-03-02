@@ -10,7 +10,8 @@
     "test": "npm run lint && jest",
     "test:watch": "jest --watchAll",
     "build": "rimraf lib/ && babel ./src --out-dir lib/ --ignore **/*.test.js --copy-files",
-    "publish": "npm run build"
+    "prerelease": "npm run build",
+    "release": "np --no-yarn"
   },
   "main": "index.js",
   "tags": [
@@ -39,6 +40,7 @@
     "eslint-plugin-flowtype": "^2.46.1",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jest": "^21.12.2",
-    "jest": "^22.4.0"
+    "jest": "^22.4.0",
+    "np": "^2.20.1"
   }
 }
