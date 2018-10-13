@@ -15,9 +15,13 @@ class UniqueNamesGenerator {
       return null;
     }
 
-    const adjective = this.adjectives[Math.floor((Math.random() * this.adjectives.length))];
-    const color = this.colors[Math.floor((Math.random() * this.colors.length))];
-    const animal = this.animals[Math.floor((Math.random() * this.animals.length))];
+    const adjective = this.adjectives[
+      Math.floor(Math.random() * this.adjectives.length)
+    ];
+    const color = this.colors[Math.floor(Math.random() * this.colors.length)];
+    const animal = this.animals[
+      Math.floor(Math.random() * this.animals.length)
+    ];
 
     return `${adjective}${separator}${color}${separator}${animal}`;
   }
