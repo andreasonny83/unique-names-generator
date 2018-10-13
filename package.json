@@ -1,6 +1,6 @@
 {
   "name": "unique-names-generator",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "description": "Generate unique and memorable names",
   "engines": {
     "node": ">=4"
