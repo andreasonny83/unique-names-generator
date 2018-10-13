@@ -50,10 +50,16 @@ describe('randomNameGenerator', () => {
     const adjectives = ['mockAdjective1', 'mockAdjective2', 'mockAdjective3'];
     const mockColors = ['mockColor1', 'mockColor2', 'mockColor3'];
     const mockAnimals = ['mockAnimal1', 'mockAnimal2', 'mockAnimal3'];
-    const uniqueNamesGenerator = new UniqueNamesGenerator(adjectives, mockColors, mockAnimals);
+    const uniqueNamesGenerator = new UniqueNamesGenerator(
+      adjectives,
+      mockColors,
+      mockAnimals
+    );
 
     const expected = uniqueNamesGenerator.generate();
 
-    expect(expected).toMatch(/^mockAdjective[123]-mockColor[123]-mockAnimal[123]$/);
+    expect(expected).toMatch(
+      /^mockAdjective[123]-mockColor[123]-mockAnimal[123]$/
+    );
   });
 });

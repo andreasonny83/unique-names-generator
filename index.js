@@ -9,7 +9,11 @@ const animals = require('./lib/dictionaries/animals.json');
 const UniqueNamesGenerator = require('./lib/unique-names-generator');
 
 exports.generate = (separator = '_') => {
-  const uniqueNamesGenerator = new UniqueNamesGenerator(adjectives, colors, animals);
+  const uniqueNamesGenerator = new UniqueNamesGenerator(
+    adjectives,
+    colors,
+    animals
+  );
 
   return uniqueNamesGenerator.generate(separator);
 };

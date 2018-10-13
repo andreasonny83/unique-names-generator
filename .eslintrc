@@ -2,17 +2,23 @@
   "env": {
     "node": true
   },
-  "plugins": [
-    "jest",
-    "flowtype"
-  ],
-  "extends": [
-    "babel",
-    "plugin:jest/recommended",
-    "airbnb-base"
-  ],
+  "plugins": ["jest", "flowtype"],
+  "extends": ["babel", "plugin:jest/recommended", "airbnb-base"],
   "parserOptions": {
     "ecmaVersion": 7,
     "sourceType": "module"
+  },
+  "rules": {
+    "operator-linebreak": ["error", "after"],
+    "comma-dangle": [
+      "error",
+      {
+        "arrays": "only-multiline",
+        "objects": "only-multiline",
+        "imports": "only-multiline",
+        "exports": "only-multiline",
+        "functions": "only-multiline"
+      }
+    ]
   }
 }

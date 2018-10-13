@@ -7,8 +7,11 @@
   },
   "scripts": {
     "lint": "eslint .",
-    "test": "npm run lint && jest",
+    "pretest": "npm run build",
+    "test": "npm run format && npm run lint && jest",
     "test:watch": "jest --watchAll",
+    "format": "prettier --write src/**/*.js",
+    "prebuild": "npm run format",
     "build": "rimraf lib/ && babel ./src --out-dir lib/ --ignore **/*.test.js --copy-files",
     "prerelease": "npm run build",
     "release": "np --no-yarn"
@@ -32,15 +35,16 @@
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
-    "babel-eslint": "^8.2.2",
-    "babel-preset-env": "^1.6.1",
-    "eslint": "^4.18.1",
-    "eslint-config-airbnb-base": "^12.1.0",
-    "eslint-config-babel": "^7.0.2",
-    "eslint-plugin-flowtype": "^2.46.1",
-    "eslint-plugin-import": "^2.8.0",
-    "eslint-plugin-jest": "^21.12.2",
-    "jest": "^22.4.0",
-    "np": "^2.20.1"
+    "babel-eslint": "^10.0.1",
+    "babel-preset-env": "^1.7.0",
+    "eslint": "^5.7.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-config-babel": "^8.0.1",
+    "eslint-plugin-flowtype": "^2.50.3",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jest": "^21.24.1",
+    "jest": "^23.6.0",
+    "np": "^3.0.4",
+    "prettier": "^1.14.3"
   }
 }
