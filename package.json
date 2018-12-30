@@ -6,25 +6,24 @@
     "node": ">=4"
   },
   "scripts": {
-    "lint": "eslint .",
+    "lint": "tslint -c tslint.json 'lib/**/*.ts'",
     "pretest": "npm run build",
     "test": "npm run format && npm run lint && jest",
     "test:watch": "jest --watchAll",
-    "format": "prettier --write src/**/*.js",
-    "prebuild": "npm run format",
-    "build": "rimraf lib/ && babel ./src --out-dir lib/ --ignore **/*.test.js --copy-files",
+    "format": "prettier --write lib/**/*.ts",
+    "prebuild": "rimraf dist && npm run format",
+    "build": "tsc",
     "prerelease": "npm run build",
     "release": "np --no-yarn"
   },
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "tags": [
     "name-generator",
     "unique-names"
   ],
   "files": [
-    "index.js",
-    "lib/unique-names-generator.js",
-    "lib/dictionaries"
+    "dist/**/*"
   ],
   "author": "AndreaSonny <andreasonny83@gmail.com>",
   "license": "MIT",
@@ -34,17 +33,38 @@
     "url": "git@github.com:andreasonny83/unique-names-generator.git"
   },
   "devDependencies": {
+    "@types/jest": "^23.3.10",
     "babel-cli": "^6.26.0",
     "babel-eslint": "^10.0.1",
     "babel-preset-env": "^1.7.0",
-    "eslint": "^5.7.0",
-    "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-config-babel": "^8.0.1",
-    "eslint-plugin-flowtype": "^2.50.3",
-    "eslint-plugin-import": "^2.14.0",
-    "eslint-plugin-jest": "^21.24.1",
     "jest": "^23.6.0",
-    "np": "^3.0.4",
-    "prettier": "^1.14.3"
+    "np": "^3.1.0",
+    "prettier": "^1.15.3",
+    "rimraf": "^2.6.2",
+    "ts-jest": "^23.10.5",
+    "tslint": "^5.12.0",
+    "tslint-config-prettier": "^1.17.0",
+    "typescript": "^3.2.2"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "lib/**/*.{js,jsx,ts,tsx}",
+      "!lib/**/*.d.ts"
+    ],
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testMatch": [
+      "<rootDir>/**/__tests__/**/*.{js,jsx,ts,tsx}",
+      "<rootDir>/**/?(*.)(spec|test).{js,jsx,ts,tsx}"
+    ],
+    "testEnvironment": "node",
+    "testURL": "http://localhost",
+    "moduleFileExtensions": [
+      "js",
+      "ts",
+      "json",
+      "node"
+    ]
   }
 }

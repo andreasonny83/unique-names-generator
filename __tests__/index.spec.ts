@@ -1,4 +1,4 @@
-import * as x from '.';
+import * as x from '../lib/index';
 
 describe('unique-names-generator', () => {
   it('should generate a random name', () => {

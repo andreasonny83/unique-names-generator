@@ -3,26 +3,26 @@
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
 
-import UniqueNamesGenerator from './unique-names-generator';
+import { UniqueNamesGenerator } from '../lib/unique-names-generator';
 
 describe('randomNameGenerator', () => {
   it('should exisist', () => {
-    const uniqueNamesGenerator = new UniqueNamesGenerator();
+    const uniqueNamesGenerator = new UniqueNamesGenerator([], [], []);
 
     expect(uniqueNamesGenerator).toBeDefined();
   });
 
   it('should have a generate method ', () => {
-    const uniqueNamesGenerator = new UniqueNamesGenerator();
+    const uniqueNamesGenerator = new UniqueNamesGenerator([], [], []);
 
     expect(uniqueNamesGenerator.generate).toBeDefined();
   });
 
   it('generate: should return nothing', () => {
-    const uniqueNamesGenerator = new UniqueNamesGenerator();
+    const uniqueNamesGenerator = new UniqueNamesGenerator([], [], []);
     const expected = uniqueNamesGenerator.generate();
 
-    expect(expected).toBeNull();
+    expect(expected).toEqual('undefined-undefined-undefined');
   });
 
   it('generate: should return a string', () => {
