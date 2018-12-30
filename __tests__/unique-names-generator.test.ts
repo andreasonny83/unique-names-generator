@@ -73,7 +73,7 @@ describe('randomNameGenerator', () => {
       mockAnimals
     );
 
-    const expected = uniqueNamesGenerator.generate('-', 2);
+    const expected = uniqueNamesGenerator.generate('-', true);
 
     expect(expected).toMatch(
       /^mockAdjective[123]-mockAnimal[123]$/
