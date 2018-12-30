@@ -62,4 +62,21 @@ describe('randomNameGenerator', () => {
       /^mockAdjective[123]-mockColor[123]-mockAnimal[123]$/
     );
   });
+
+  it('should generate only 2 word when depth is set to 2', () => {
+    const adjectives = ['mockAdjective1', 'mockAdjective2', 'mockAdjective3'];
+    const mockColors = ['mockColor1', 'mockColor2', 'mockColor3'];
+    const mockAnimals = ['mockAnimal1', 'mockAnimal2', 'mockAnimal3'];
+    const uniqueNamesGenerator = new UniqueNamesGenerator(
+      adjectives,
+      mockColors,
+      mockAnimals
+    );
+
+    const expected = uniqueNamesGenerator.generate('-', 2);
+
+    expect(expected).toMatch(
+      /^mockAdjective[123]-mockAnimal[123]$/
+    );
+  })
 });

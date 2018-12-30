@@ -8,12 +8,12 @@ import colors from './dictionaries/colors.json';
 import animals from './dictionaries/animals.json';
 import { UniqueNamesGenerator } from './unique-names-generator';
 
-export const generate = (separator = '_') => {
+export const generate = (separator: string = '_', depth?: boolean): string => {
   const uniqueNamesGenerator = new UniqueNamesGenerator(
     adjectives,
     colors,
     animals
   );
 
-  return uniqueNamesGenerator.generate(separator);
+  return uniqueNamesGenerator.generate(separator, depth);
 };

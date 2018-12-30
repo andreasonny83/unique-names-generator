@@ -14,19 +14,23 @@ export class UniqueNamesGenerator {
     this.animals = animals;
   }
 
-  public generate(separator = '-') {
+  public generate(separator: string = '-', short?: boolean): string {
     if (!this.adjectives || !this.colors || !this.animals) {
-      return null;
+      return '';
     }
 
     const adjective = this.adjectives[
       Math.floor(Math.random() * this.adjectives.length)
     ];
-    const color = this.colors[Math.floor(Math.random() * this.colors.length)];
     const animal = this.animals[
       Math.floor(Math.random() * this.animals.length)
     ];
 
+    if (short) {
+      return `${adjective}${separator}${animal}`;
+    }
+
+    const color = this.colors[Math.floor(Math.random() * this.colors.length)];
     return `${adjective}${separator}${color}${separator}${animal}`;
   }
 }
