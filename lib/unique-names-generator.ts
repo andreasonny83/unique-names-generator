@@ -3,28 +3,34 @@
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
 
-class UniqueNamesGenerator {
-  constructor(adjectives, colors, animals) {
+export class UniqueNamesGenerator {
+  public adjectives: string[];
+  public colors: string[];
+  public animals: string[];
+
+  constructor(adjectives: string[], colors: string[], animals: string[]) {
     this.adjectives = adjectives;
     this.colors = colors;
     this.animals = animals;
   }
 
-  generate(separator = '-') {
+  public generate(separator: string = '-', short?: boolean): string {
     if (!this.adjectives || !this.colors || !this.animals) {
-      return null;
+      return '';
     }
 
     const adjective = this.adjectives[
       Math.floor(Math.random() * this.adjectives.length)
     ];
-    const color = this.colors[Math.floor(Math.random() * this.colors.length)];
     const animal = this.animals[
       Math.floor(Math.random() * this.animals.length)
     ];
 
+    if (short) {
+      return `${adjective}${separator}${animal}`;
+    }
+
+    const color = this.colors[Math.floor(Math.random() * this.colors.length)];
     return `${adjective}${separator}${color}${separator}${animal}`;
   }
 }
-
-module.exports = UniqueNamesGenerator;
