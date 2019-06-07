@@ -99,8 +99,8 @@ The default separator is set to `_`.
 Type: `boolean`
 Default: `false`
 
-If set, it will return a random word composed by 2 words.
-The default value is set tu true and it will return a name composed by 3 words.
+If set, it will return a random word composed of 2 words.
+The default value is set to true and it will return a name composed of 3 words.
 
 ## Contributing
 
