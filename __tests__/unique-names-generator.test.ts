@@ -1,82 +1,188 @@
-// Copyright (c) 2018 AndreaSonny <andreasonny83@gmail.com> (https://github.com/andreasonny83)
+// Copyright (c) 2018-2019 AndreaSonny <andreasonny83@gmail.com> (https://github.com/andreasonny83)
 //
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
 
-import { UniqueNamesGenerator } from '../lib/unique-names-generator';
+import { UniqueNamesGenerator, Config } from '../lib/unique-names-generator';
 
 describe('randomNameGenerator', () => {
-  it('should exisist', () => {
-    const uniqueNamesGenerator = new UniqueNamesGenerator([], [], []);
+  it('should exists', () => {
+    // Arrange
+    const config: Config = {
+      dictionaries: [[], [], []],
+      separator: '_',
+      length: 3,
+    };
 
+    // Act
+    const uniqueNamesGenerator = new UniqueNamesGenerator(config);
+
+    // Assert
     expect(uniqueNamesGenerator).toBeDefined();
   });
 
   it('should have a generate method ', () => {
-    const uniqueNamesGenerator = new UniqueNamesGenerator([], [], []);
+    // Arrange
+    const config: Config = {
+      dictionaries: [[], [], []],
+      separator: '_',
+      length: 3,
+    };
 
+    // Act
+    const uniqueNamesGenerator = new UniqueNamesGenerator(config);
+
+    // Assert
     expect(uniqueNamesGenerator.generate).toBeDefined();
   });
 
   it('generate: should return nothing', () => {
-    const uniqueNamesGenerator = new UniqueNamesGenerator([], [], []);
-    const expected = uniqueNamesGenerator.generate();
+    // Arrange
+    const config: Config = {
+      dictionaries: [[], [], []],
+      separator: '-',
+      length: 3,
+    };
 
-    expect(expected).toEqual('undefined-undefined-undefined');
+    // Act
+    const uniqueNamesGenerator = new UniqueNamesGenerator(config);
+    const response = uniqueNamesGenerator.generate();
+
+    // Assert
+    expect(response).toEqual('undefined-undefined-undefined');
   });
 
   it('generate: should return a string', () => {
-    const uniqueNamesGenerator = new UniqueNamesGenerator([], [], []);
-    const expected = uniqueNamesGenerator.generate();
+    // Arrange
+    const config: Config = {
+      dictionaries: [[], [], []],
+      separator: '_',
+      length: 3,
+    };
 
-    expect(typeof expected).toEqual('string');
+    // Act
+    const uniqueNamesGenerator = new UniqueNamesGenerator(config);
+    const response = uniqueNamesGenerator.generate();
+
+    // Assert
+    expect(typeof response).toEqual('string');
   });
 
   it('generate: should generate a random name', () => {
-    const uniqueNamesGenerator = new UniqueNamesGenerator(['a'], ['b'], ['c']);
-    const expected = uniqueNamesGenerator.generate();
+    // Arrange
+    const config: Config = {
+      dictionaries: [['a'], ['b'], ['c']],
+      separator: '-',
+      length: 3,
+    };
+    const expected = 'a-b-c';
 
-    expect(expected).toEqual('a-b-c');
+    // Act
+    const uniqueNamesGenerator = new UniqueNamesGenerator(config);
+    const response = uniqueNamesGenerator.generate();
+
+    // Assert
+    expect(response).toEqual(expected);
   });
 
   it('generate: should accept a custom separator character', () => {
-    const uniqueNamesGenerator = new UniqueNamesGenerator(['a'], ['b'], ['c']);
-    const expected = uniqueNamesGenerator.generate('_');
+    // Arrange
+    const config: Config = {
+      dictionaries: [['a'], ['b'], ['c']],
+      separator: '_',
+      length: 3,
+    };
+    const expected = 'a_b_c';
 
-    expect(expected).toEqual('a_b_c');
+    // Act
+    const uniqueNamesGenerator = new UniqueNamesGenerator(config);
+    const response = uniqueNamesGenerator.generate();
+
+    // Assert
+    expect(response).toEqual(expected);
   });
 
   it('should generate random combinations', () => {
-    const adjectives = ['mockAdjective1', 'mockAdjective2', 'mockAdjective3'];
-    const mockColors = ['mockColor1', 'mockColor2', 'mockColor3'];
-    const mockAnimals = ['mockAnimal1', 'mockAnimal2', 'mockAnimal3'];
-    const uniqueNamesGenerator = new UniqueNamesGenerator(
-      adjectives,
-      mockColors,
-      mockAnimals
-    );
+    // Arrange
+    const adjectives = ['Adjective1', 'Adjective2', 'Adjective3'];
+    const colors = ['Color1', 'Color2', 'Color3'];
+    const subjects = ['Animal1', 'Animal2', 'Animal3'];
+    const config: Config = {
+      dictionaries: [adjectives, colors, subjects],
+      separator: '-',
+      length: 3,
+    };
 
-    const expected = uniqueNamesGenerator.generate();
+    // Act
+    const uniqueNamesGenerator = new UniqueNamesGenerator(config);
+    const response = uniqueNamesGenerator.generate();
 
-    expect(expected).toMatch(
-      /^mockAdjective[123]-mockColor[123]-mockAnimal[123]$/
-    );
+    // Assert
+    expect(response).toMatch(/^Adjective[123]-Color[123]-Animal[123]$/);
   });
 
   it('should generate only 2 word when depth is set to 2', () => {
-    const adjectives = ['mockAdjective1', 'mockAdjective2', 'mockAdjective3'];
-    const mockColors = ['mockColor1', 'mockColor2', 'mockColor3'];
-    const mockAnimals = ['mockAnimal1', 'mockAnimal2', 'mockAnimal3'];
-    const uniqueNamesGenerator = new UniqueNamesGenerator(
-      adjectives,
-      mockColors,
-      mockAnimals
-    );
+    // Arrange
+    const adjectives = ['Adjective1', 'Adjective2', 'Adjective3'];
+    const colors = ['Color1', 'Color2', 'Color3'];
+    const subjects = ['Animal1', 'Animal2', 'Animal3'];
+    const config: Config = {
+      dictionaries: [adjectives, subjects, colors],
+      separator: '-',
+      length: 2,
+    };
 
-    const expected = uniqueNamesGenerator.generate('-', true);
+    // Act
+    const uniqueNamesGenerator = new UniqueNamesGenerator(config);
+    const expected = uniqueNamesGenerator.generate();
 
-    expect(expected).toMatch(
-      /^mockAdjective[123]-mockAnimal[123]$/
-    );
-  })
+    // Assert
+    expect(expected).toMatch(/^Adjective[123]-Animal[123]$/);
+  });
+
+  it('should throw an error when there are no dictionaries', () => {
+    // Arrange
+    const config: any = {
+      dictionaries: undefined,
+    };
+
+    // Act
+    const uniqueNamesGenerator = new UniqueNamesGenerator(config);
+    const expected = () => uniqueNamesGenerator.generate();
+
+    // Assert
+    expect(() => expected()).toThrowErrorMatchingSnapshot();
+  });
+
+  it('should throw an error when there are no enough dictionaries', () => {
+    // Arrange
+    const config: Config = {
+      dictionaries: [],
+      length: 2,
+      separator: '_',
+    };
+
+    // Act
+    const uniqueNamesGenerator = new UniqueNamesGenerator(config);
+    const expected = () => uniqueNamesGenerator.generate();
+
+    // Assert
+    expect(() => expected()).toThrowErrorMatchingSnapshot();
+  });
+
+  it('should throw an error when the provided length is invalid', () => {
+    // Arrange
+    const config: Config = {
+      dictionaries: [],
+      length: -1,
+      separator: '_',
+    };
+
+    // Act
+    const uniqueNamesGenerator = new UniqueNamesGenerator(config);
+    const expected = () => uniqueNamesGenerator.generate();
+
+    // Assert
+    expect(() => expected()).toThrowErrorMatchingSnapshot();
+  });
 });

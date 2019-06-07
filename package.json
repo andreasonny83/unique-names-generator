@@ -8,8 +8,8 @@
   "scripts": {
     "lint": "tslint -c tslint.json 'lib/**/*.ts'",
     "pretest": "npm run build",
-    "test": "npm run format && npm run lint && jest",
-    "test:watch": "jest --watchAll",
+    "test": "npm run format && npm run lint && jest --coverage",
+    "test:watch": "jest --coverage --watchAll",
     "format": "prettier --write lib/**/*.ts",
     "prebuild": "rimraf dist && npm run format",
     "build": "tsc",
@@ -40,29 +40,9 @@
     "prettier": "^1.15.3",
     "rimraf": "^2.6.2",
     "ts-jest": "^24.0.2",
+    "ts-node": "^8.2.0",
     "tslint": "^5.12.0",
     "tslint-config-prettier": "^1.17.0",
     "typescript": "^3.2.2"
-  },
-  "jest": {
-    "collectCoverageFrom": [
-      "lib/**/*.{js,jsx,ts,tsx}",
-      "!lib/**/*.d.ts"
-    ],
-    "transform": {
-      "^.+\\.tsx?$": "ts-jest"
-    },
-    "testMatch": [
-      "<rootDir>/**/__tests__/**/*.{js,jsx,ts,tsx}",
-      "<rootDir>/**/?(*.)(spec|test).{js,jsx,ts,tsx}"
-    ],
-    "testEnvironment": "node",
-    "testURL": "http://localhost",
-    "moduleFileExtensions": [
-      "js",
-      "ts",
-      "json",
-      "node"
-    ]
   }
 }
