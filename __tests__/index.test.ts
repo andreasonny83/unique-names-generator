@@ -1,4 +1,4 @@
-import { uniqueNamesGenerator, UniqueNamesGeneratorConfig, colors } from '..';
+import { uniqueNamesGenerator, UniqueNamesGeneratorConfig, colors } from '../index';
 
 describe('unique-names-generator', () => {
   it('should generate a random name', () => {

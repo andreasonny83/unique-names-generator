@@ -3,20 +3,20 @@
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
 
-import adjectivesDictionary from './dictionaries/adjectives.json';
-import colorsDictionary from './dictionaries/colors.json';
-import animalsDictionary from './dictionaries/animals.json';
+import adjectives from './dictionaries/adjectives';
+import colors from './dictionaries/colors';
+import animals from './dictionaries/animals';
 import { UniqueNamesGenerator, Config } from './unique-names-generator';
+
+export type UniqueNamesGeneratorConfig = Partial<Config>;
 
 const defaultConfig: Config = {
   separator: '_',
   length: 3,
-  dictionaries: [adjectivesDictionary, colorsDictionary, animalsDictionary],
+  dictionaries: [adjectives, colors, animals],
 };
 
-export type UniqueNamesGeneratorConfig = Partial<Config>;
-
-export const uniqueNamesGenerator = (customConfig?: UniqueNamesGeneratorConfig): string => {
+export const uniqueNamesGenerator = (customConfig: UniqueNamesGeneratorConfig = {}): string => {
   const config: Config = {
     ...defaultConfig,
     ...customConfig,
