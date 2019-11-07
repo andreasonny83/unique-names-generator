@@ -178,7 +178,7 @@ const colors = [
 const characterName: string = uniqueNamesGenerator({
   dictionaries: [colors, starWarsCharacters],
   length: 2,
-  space: ' '
+  separator: ' '
 }); // Green Luke Skywalker
 ```
 
@@ -210,7 +210,7 @@ const xMen = [
 const characterName: string = uniqueNamesGenerator({
   dictionaries: [improvedAdjectives, xMen],
   length: 2,
-  space: '-'
+  separator: '-'
 }); // eccentric-iceman
 ```
 
