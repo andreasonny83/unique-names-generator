@@ -148,7 +148,7 @@ The default dictionaries are provided in the following order: `adjectives, color
 import { uniqueNamesGenerator, adjectives, colors, animals } from 'unique-names-generator';
 
 const shortName: string = uniqueNamesGenerator({
-  dictionaries: [color, adjectives, animal]
+  dictionaries: [colors, adjectives, animals]
 }); // red_big_donkey
 ```
 
