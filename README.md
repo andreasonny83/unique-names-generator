@@ -1,9 +1,8 @@
 # Unique Names Generator
-<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->[![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors-)<!-- ALL-CONTRIBUTORS-BADGE:END -->
 
-> More than 28,000,000 name combinations
 
 [![Build Status](https://travis-ci.com/andreasonny83/unique-names-generator.svg?branch=master)](https://travis-ci.com/andreasonny83/unique-names-generator)
+[![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors-)
 [![](https://img.shields.io/npm/v/unique-names-generator.svg)](https://npmjs.org/package/unique-names-generator)
 [![](https://img.shields.io/npm/l/unique-names-generator.svg)](https://github.com/andreasonny83/unique-names-generator/blob/master/LICENSE)
 [![Greenkeeper badge](https://badges.greenkeeper.io/andreasonny83/unique-names-generator.svg)](https://greenkeeper.io/)
@@ -11,6 +10,8 @@
 [![dependencies Status](https://david-dm.org/andreasonny83/unique-names-generator/status.svg)](https://david-dm.org/andreasonny83/unique-names-generator)
 
 [![NPM](https://nodei.co/npm/unique-names-generator.png)](https://npmjs.org/package/unique-names-generator)
+
+> More than 28,000,000 name combinations
 
 ## Docs
 
@@ -62,6 +63,7 @@ $ npm --version
     - [Short](#short)
   - [Contributing](#contributing)
   - [License](#license)
+  - [Contributors ✨](#contributors-%e2%9c%a8)
 
 ## Installation
 
@@ -287,6 +289,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://about.me/andreasonny83"><img src="https://avatars0.githubusercontent.com/u/8806300?v=4" width="100px;" alt="Andrea Z"/><br /><sub><b>Andrea Z</b></sub></a><br /><a href="#question-andreasonny83" title="Answering Questions">💬</a> <a href="https://github.com/andreasonny83/unique-names-generator/commits?author=andreasonny83" title="Code">💻</a> <a href="#projectManagement-andreasonny83" title="Project Management">📆</a></td>
     <td align="center"><a href="https://github.com/digibake"><img src="https://avatars1.githubusercontent.com/u/6882093?v=4" width="100px;" alt="Baker"/><br /><sub><b>Baker</b></sub></a><br /><a href="https://github.com/andreasonny83/unique-names-generator/issues?q=author%3Adigibake" title="Bug reports">🐛</a></td>
     <td align="center"><a href="https://github.com/ajainuary"><img src="https://avatars1.githubusercontent.com/u/30972152?v=4" width="100px;" alt="Anurag Jain"/><br /><sub><b>Anurag Jain</b></sub></a><br /><a href="#ideas-ajainuary" title="Ideas, Planning, & Feedback">🤔</a></td>
+    <td align="center"><a href="https://github.com/erdahuja"><img src="https://avatars3.githubusercontent.com/u/15168716?v=4" width="100px;" alt="Deepak"/><br /><sub><b>Deepak</b></sub></a><br /><a href="https://github.com/andreasonny83/unique-names-generator/commits?author=erdahuja" title="Documentation">📖</a> <a href="#ideas-erdahuja" title="Ideas, Planning, & Feedback">🤔</a></td>
   </tr>
 </table>
 

@@ -38,6 +38,16 @@
       "contributions": [
         "ideas"
       ]
+    },
+    {
+      "login": "erdahuja",
+      "name": "Deepak",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/15168716?v=4",
+      "profile": "https://github.com/erdahuja",
+      "contributions": [
+        "doc",
+        "ideas"
+      ]
     }
   ],
   "contributorsPerLine": 7
