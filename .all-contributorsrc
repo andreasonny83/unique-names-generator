@@ -20,6 +20,15 @@
         "code",
         "projectManagement"
       ]
+    },
+    {
+      "login": "digibake",
+      "name": "Baker",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/6882093?v=4",
+      "profile": "https://github.com/digibake",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7
