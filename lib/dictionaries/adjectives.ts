@@ -900,7 +900,6 @@ export default [
   'decent',
   'unnecessary',
   'flying',
-  'fucking',
   'random',
   'influential',
   'dull',
