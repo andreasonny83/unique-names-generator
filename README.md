@@ -290,6 +290,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/digibake"><img src="https://avatars1.githubusercontent.com/u/6882093?v=4" width="100px;" alt="Baker"/><br /><sub><b>Baker</b></sub></a><br /><a href="https://github.com/andreasonny83/unique-names-generator/issues?q=author%3Adigibake" title="Bug reports">🐛</a></td>
     <td align="center"><a href="https://github.com/ajainuary"><img src="https://avatars1.githubusercontent.com/u/30972152?v=4" width="100px;" alt="Anurag Jain"/><br /><sub><b>Anurag Jain</b></sub></a><br /><a href="#ideas-ajainuary" title="Ideas, Planning, & Feedback">🤔</a></td>
     <td align="center"><a href="https://github.com/erdahuja"><img src="https://avatars3.githubusercontent.com/u/15168716?v=4" width="100px;" alt="Deepak"/><br /><sub><b>Deepak</b></sub></a><br /><a href="https://github.com/andreasonny83/unique-names-generator/commits?author=erdahuja" title="Documentation">📖</a> <a href="#ideas-erdahuja" title="Ideas, Planning, & Feedback">🤔</a></td>
+    <td align="center"><a href="https://github.com/abhijitmehta"><img src="https://avatars2.githubusercontent.com/u/5481869?v=4" width="100px;" alt="Abhijit Mehta"/><br /><sub><b>Abhijit Mehta</b></sub></a><br /><a href="#ideas-abhijitmehta" title="Ideas, Planning, & Feedback">🤔</a></td>
   </tr>
 </table>
 

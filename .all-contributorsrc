@@ -48,6 +48,15 @@
         "doc",
         "ideas"
       ]
+    },
+    {
+      "login": "abhijitmehta",
+      "name": "Abhijit Mehta",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/5481869?v=4",
+      "profile": "https://github.com/abhijitmehta",
+      "contributions": [
+        "ideas"
+      ]
     }
   ],
   "contributorsPerLine": 7
