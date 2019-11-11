@@ -3,23 +3,28 @@
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
 
+type Style = 'lowerCase' | 'upperCase' | 'capital';
+
 export interface Config {
   separator: string;
   length: number;
   dictionaries: string[][];
+  style?: Style;
 }
 
 export class UniqueNamesGenerator {
   private dictionaries: string[][];
   private length: number;
   private separator: string;
+  private style?: Style;
 
   constructor(config: Config) {
-    const { length, separator, dictionaries } = config;
+    const { length, separator, dictionaries, style } = config;
 
     this.dictionaries = dictionaries;
     this.separator = separator;
     this.length = length;
+    this.style = style;
   }
 
   public generate(): string {
@@ -37,15 +42,23 @@ export class UniqueNamesGenerator {
     if (this.length > this.dictionaries.length) {
       throw new Error(
         'The length cannot be bigger than the number of dictionaries.\n' +
-          `Length provided: ${this.length}. Number of dictionaries provided: ${
-            this.dictionaries.length
-          }`,
+          `Length provided: ${this.length}. Number of dictionaries provided: ${this.dictionaries.length}`,
       );
     }
 
     return this.dictionaries.slice(0, this.length).reduce((acc: string, curr: string[]) => {
       const rnd = Math.floor(Math.random() * curr.length);
-      const word = curr[rnd];
+      let word = curr[rnd] || '';
+
+      if (this.style === 'lowerCase') {
+        word = word.toLowerCase();
+      } else if (this.style === 'capital') {
+        const [firstLetter, ...rest] = word.split('');
+        word = firstLetter.toUpperCase() + rest.join('');
+      } else if (this.style === 'upperCase') {
+        word = word.toUpperCase();
+      }
+
       return acc ? `${acc}${this.separator}${word}` : `${word}`;
     }, '');
   }

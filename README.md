@@ -52,8 +52,9 @@ $ npm --version
     - [uniqueNamesGenerator(options)](#uniquenamesgeneratoroptions)
     - [options](#options)
       - [separator](#separator)
-    - [length](#length)
-    - [dictionaries](#dictionaries)
+      - [length](#length)
+      - [style](#style)
+      - [dictionaries](#dictionaries)
   - [Examples](#examples)
     - [Custom dictionaries](#custom-dictionaries)
     - [Combine custom and provided dictionaries](#combine-custom-and-provided-dictionaries)
@@ -128,7 +129,7 @@ Default: `_`
 A string separator to be used for separate the words generated.
 The default separator is set to `_`.
 
-### length
+#### length
 
 Type: `number`
 
@@ -137,7 +138,36 @@ Default: `3`
 The default value is set to `3` and it will return a name composed of 3 words.
 This values must be equal or minor to the number of [dictionaries](#dictionaries) defined (3 by default)
 
-### dictionaries
+#### style
+
+Type: `lowerCase | upperCase | capital`
+
+Default: `lowerCase`
+
+The default value is set to `lowerCase` and it will return a lower case name.
+By setting the value to `upperCase`, the words, will be returned with all the letters in upper case format.
+The `capital` option will capitalize each word of the unique name generated
+
+```typescript
+import { uniqueNamesGenerator, adjectives, colors, animals } from 'unique-names-generator';
+
+const capitalizedName: string = uniqueNamesGenerator({
+  dictionaries: [colors, adjectives, animals],
+  style: 'capital'
+}); // Red_Big_Donkey
+
+const upperCaseName: string = uniqueNamesGenerator({
+  dictionaries: [colors, adjectives, animals],
+  style: 'capital'
+}); // RED_BIG_DONKEY
+
+const lowerCaseName: string = uniqueNamesGenerator({
+  dictionaries: [colors, adjectives, animals],
+  style: 'capital'
+}); // red_big_donkey
+```
+
+#### dictionaries
 
 Type: `array`
 

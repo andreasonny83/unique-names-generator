@@ -113,4 +113,88 @@ describe('unique-names-generator', () => {
     // Assert
     expect(response).toMatch(/^testSubject\s\w+$/);
   });
+
+  it('should not alter the words when a style is not provided', () => {
+    // Arrange
+    const expectedName = 'TeSt_dEfauLt_STYLE';
+    const config: UniqueNamesGeneratorConfig = {
+      separator: '_',
+      length: 3,
+      dictionaries: [['TeSt'], ['dEfauLt'], ['STYLE']],
+    };
+
+    // Act
+    const result = uniqueNamesGenerator(config);
+
+    // Assert
+    expect(result).toEqual(expectedName);
+  });
+
+  it('should return a lower case formatted name when style is set to "lowerCase"', () => {
+    // Arrange
+    const expectedName = 'test_default_style';
+    const config: UniqueNamesGeneratorConfig = {
+      separator: '_',
+      length: 3,
+      dictionaries: [['TEST'], ['dEfault'], ['style']],
+      style: 'lowerCase',
+    };
+
+    // Act
+    const result = uniqueNamesGenerator(config);
+
+    // Assert
+    expect(result).toEqual(expectedName);
+  });
+
+  it('should return a lower case formatted name when style is set to "lowerCase"', () => {
+    // Arrange
+    const expectedName = 'test_default_style';
+    const config: UniqueNamesGeneratorConfig = {
+      separator: '_',
+      length: 3,
+      dictionaries: [['test'], ['default'], ['style']],
+      style: 'lowerCase',
+    };
+
+    // Act
+    const result = uniqueNamesGenerator(config);
+
+    // Assert
+    expect(result).toEqual(expectedName);
+  });
+
+  it('should return an upper case formatted name when style is set to "upperCase"', () => {
+    // Arrange
+    const expectedName = 'TEST_DEFAULT_STYLE';
+    const config: UniqueNamesGeneratorConfig = {
+      separator: '_',
+      length: 3,
+      dictionaries: [['test'], ['default'], ['style']],
+      style: 'upperCase',
+    };
+
+    // Act
+    const result = uniqueNamesGenerator(config);
+
+    // Assert
+    expect(result).toEqual(expectedName);
+  });
+
+  it('should return a capitalized formatted name when style is set to "capital"', () => {
+    // Arrange
+    const expectedName = 'Test_Default_Style';
+    const config: UniqueNamesGeneratorConfig = {
+      separator: '_',
+      length: 3,
+      dictionaries: [['test'], ['default'], ['style']],
+      style: 'capital',
+    };
+
+    // Act
+    const result = uniqueNamesGenerator(config);
+
+    // Assert
+    expect(result).toEqual(expectedName);
+  });
 });

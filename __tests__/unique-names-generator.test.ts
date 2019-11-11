@@ -49,7 +49,7 @@ describe('randomNameGenerator', () => {
     const response = uniqueNamesGenerator.generate();
 
     // Assert
-    expect(response).toEqual('undefined-undefined-undefined');
+    expect(response).toEqual('');
   });
 
   it('generate: should return a string', () => {
@@ -184,5 +184,83 @@ describe('randomNameGenerator', () => {
 
     // Assert
     expect(() => expected()).toThrowErrorMatchingSnapshot();
+  });
+
+  describe('style', () => {
+    it('should return a lower case formatted name when style is set to "lowerCase"', () => {
+      // Arrange
+      const config: Config = {
+        dictionaries: [['test'], ['default'], ['style']],
+        length: 3,
+        separator: '_',
+        style: 'lowerCase',
+      };
+
+      const expectedName = 'test_default_style';
+
+      // Act
+      const uniqueNamesGenerator = new UniqueNamesGenerator(config);
+      const result = uniqueNamesGenerator.generate();
+
+      // Assert
+      expect(result).toEqual(expectedName);
+    });
+
+    it('should return a capitalized formatted name when style is set to "capital"', () => {
+      // Arrange
+      const config: Config = {
+        dictionaries: [['test'], ['default'], ['style']],
+        length: 3,
+        separator: '_',
+        style: 'capital',
+      };
+
+      const expectedName = 'Test_Default_Style';
+
+      // Act
+      const uniqueNamesGenerator = new UniqueNamesGenerator(config);
+      const result = uniqueNamesGenerator.generate();
+
+      // Assert
+      expect(result).toEqual(expectedName);
+    });
+
+    it('should return an upper case formatted name when style is set to "upperCase"', () => {
+      // Arrange
+      const config: Config = {
+        dictionaries: [['test'], ['default'], ['style']],
+        length: 3,
+        separator: '_',
+        style: 'upperCase',
+      };
+
+      const expectedName = 'TEST_DEFAULT_STYLE';
+
+      // Act
+      const uniqueNamesGenerator = new UniqueNamesGenerator(config);
+      const result = uniqueNamesGenerator.generate();
+
+      // Assert
+      expect(result).toEqual(expectedName);
+    });
+
+    it('should not throw any error when the word in the dictionary is empty and a formatted style is provided', () => {
+      // Arrange
+      const config: Config = {
+        dictionaries: [[], [], []],
+        length: 3,
+        separator: '_',
+        style: 'lowerCase',
+      };
+
+      const expectedName = '';
+
+      // Act
+      const uniqueNamesGenerator = new UniqueNamesGenerator(config);
+      const result = uniqueNamesGenerator.generate();
+
+      // Assert
+      expect(result).toEqual(expectedName);
+    });
   });
 });
