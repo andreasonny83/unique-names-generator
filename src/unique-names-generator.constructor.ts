@@ -6,9 +6,9 @@
 type Style = 'lowerCase' | 'upperCase' | 'capital';
 
 export interface Config {
-  separator: string;
-  length: number;
   dictionaries: string[][];
+  separator?: string;
+  length?: number;
   style?: Style;
 }
 
@@ -16,7 +16,7 @@ export class UniqueNamesGenerator {
   private dictionaries: string[][];
   private length: number;
   private separator: string;
-  private style?: Style;
+  private style: Style;
 
   constructor(config: Config) {
     const { length, separator, dictionaries, style } = config;

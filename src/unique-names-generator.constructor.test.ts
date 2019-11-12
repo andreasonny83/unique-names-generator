@@ -1,9 +1,4 @@
-// Copyright (c) 2018-2019 AndreaSonny <andreasonny83@gmail.com> (https://github.com/andreasonny83)
-//
-// This software is released under the MIT License.
-// https://opensource.org/licenses/MIT
-
-import { UniqueNamesGenerator, Config } from '../lib/unique-names-generator';
+import { UniqueNamesGenerator, Config } from './unique-names-generator.constructor';
 
 describe('randomNameGenerator', () => {
   it('should exists', () => {
@@ -142,13 +137,13 @@ describe('randomNameGenerator', () => {
 
   it('should throw an error when there are no dictionaries', () => {
     // Arrange
-    const config: any = {
+    const config = {
       dictionaries: undefined,
-    };
+    } as Config;
 
     // Act
     const uniqueNamesGenerator = new UniqueNamesGenerator(config);
-    const expected = () => uniqueNamesGenerator.generate();
+    const expected = (): unknown => uniqueNamesGenerator.generate();
 
     // Assert
     expect(() => expected()).toThrowErrorMatchingSnapshot();
@@ -164,7 +159,7 @@ describe('randomNameGenerator', () => {
 
     // Act
     const uniqueNamesGenerator = new UniqueNamesGenerator(config);
-    const expected = () => uniqueNamesGenerator.generate();
+    const expected = (): unknown => uniqueNamesGenerator.generate();
 
     // Assert
     expect(() => expected()).toThrowErrorMatchingSnapshot();
@@ -180,7 +175,7 @@ describe('randomNameGenerator', () => {
 
     // Act
     const uniqueNamesGenerator = new UniqueNamesGenerator(config);
-    const expected = () => uniqueNamesGenerator.generate();
+    const expected = (): unknown => uniqueNamesGenerator.generate();
 
     // Assert
     expect(() => expected()).toThrowErrorMatchingSnapshot();
