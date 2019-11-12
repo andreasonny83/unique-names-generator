@@ -1,25 +1,43 @@
-import { uniqueNamesGenerator, UniqueNamesGeneratorConfig, colors } from '../index';
+import { uniqueNamesGenerator, adjectives, colors, animals, Config } from './index';
 
 describe('unique-names-generator', () => {
   it('should generate a random name', () => {
+    // Arrange
+    const config: Config = {
+      dictionaries: [adjectives, colors, animals],
+    };
+
     // Act
-    const response = uniqueNamesGenerator();
+    const response = uniqueNamesGenerator(config);
 
     // Assert
     expect(response).toBeDefined();
   });
 
   it('should generate a string composed by 3 words underscore separated', () => {
+    // Arrange
+    const config: Config = {
+      dictionaries: [adjectives, colors, animals],
+    };
+
     // Act
-    const response = uniqueNamesGenerator();
+    const response = uniqueNamesGenerator(config);
 
     // Assert
     expect(response).toMatch(/^\w+_\w+_\w+$/);
   });
 
+  it('should require a dictionary option', () => {
+    // Assert
+    expect(() => (uniqueNamesGenerator as Function)()).toThrowErrorMatchingInlineSnapshot(
+      `"A \\"dictionaries\\" array must be provided. This is a breaking change introduced starting from Unique Name Generator v4. Read more about the breaking change here: https://github.com/andreasonny83/unique-names-generator#migration-guide"`,
+    );
+  });
+
   it('should accept a custom separator', () => {
     // Arrange
-    const config: UniqueNamesGeneratorConfig = {
+    const config: Config = {
+      dictionaries: [animals, colors, adjectives],
       separator: '+',
     };
 
@@ -32,7 +50,8 @@ describe('unique-names-generator', () => {
 
   it('should accept an emoji as separator', () => {
     // Arrange
-    const config: UniqueNamesGeneratorConfig = {
+    const config: Config = {
+      dictionaries: [animals, colors, adjectives],
       separator: '🎃',
     };
 
@@ -45,7 +64,8 @@ describe('unique-names-generator', () => {
 
   it('should accept a word as separator', () => {
     // Arrange
-    const config: UniqueNamesGeneratorConfig = {
+    const config: Config = {
+      dictionaries: [animals, colors, adjectives],
       separator: 'SPACE',
     };
 
@@ -58,7 +78,8 @@ describe('unique-names-generator', () => {
 
   it('should accept a short mode', () => {
     // Arrange
-    const config: UniqueNamesGeneratorConfig = {
+    const config: Config = {
+      dictionaries: [animals, colors, adjectives],
       length: 2,
     };
 
@@ -71,7 +92,7 @@ describe('unique-names-generator', () => {
 
   it('should accept a custom dictionary', () => {
     // Arrange
-    const config: UniqueNamesGeneratorConfig = {
+    const config: Config = {
       separator: ' ',
       length: 1,
       dictionaries: [['testAdjective']],
@@ -86,7 +107,7 @@ describe('unique-names-generator', () => {
 
   it('should accept two custom dictionaries', () => {
     // Arrange
-    const config: UniqueNamesGeneratorConfig = {
+    const config: Config = {
       separator: ' ',
       length: 2,
       dictionaries: [['testColor'], ['testAdjective']],
@@ -101,7 +122,7 @@ describe('unique-names-generator', () => {
 
   it('should reuse a template dictionary combined to a custom one', () => {
     // Arrange
-    const config: UniqueNamesGeneratorConfig = {
+    const config: Config = {
       separator: ' ',
       length: 2,
       dictionaries: [['testSubject'], colors],
@@ -117,7 +138,7 @@ describe('unique-names-generator', () => {
   it('should not alter the words when a style is not provided', () => {
     // Arrange
     const expectedName = 'TeSt_dEfauLt_STYLE';
-    const config: UniqueNamesGeneratorConfig = {
+    const config: Config = {
       separator: '_',
       length: 3,
       dictionaries: [['TeSt'], ['dEfauLt'], ['STYLE']],
@@ -133,7 +154,7 @@ describe('unique-names-generator', () => {
   it('should return a lower case formatted name when style is set to "lowerCase"', () => {
     // Arrange
     const expectedName = 'test_default_style';
-    const config: UniqueNamesGeneratorConfig = {
+    const config: Config = {
       separator: '_',
       length: 3,
       dictionaries: [['TEST'], ['dEfault'], ['style']],
@@ -150,7 +171,7 @@ describe('unique-names-generator', () => {
   it('should return a lower case formatted name when style is set to "lowerCase"', () => {
     // Arrange
     const expectedName = 'test_default_style';
-    const config: UniqueNamesGeneratorConfig = {
+    const config: Config = {
       separator: '_',
       length: 3,
       dictionaries: [['test'], ['default'], ['style']],
@@ -167,7 +188,7 @@ describe('unique-names-generator', () => {
   it('should return an upper case formatted name when style is set to "upperCase"', () => {
     // Arrange
     const expectedName = 'TEST_DEFAULT_STYLE';
-    const config: UniqueNamesGeneratorConfig = {
+    const config: Config = {
       separator: '_',
       length: 3,
       dictionaries: [['test'], ['default'], ['style']],
@@ -184,7 +205,7 @@ describe('unique-names-generator', () => {
   it('should return a capitalized formatted name when style is set to "capital"', () => {
     // Arrange
     const expectedName = 'Test_Default_Style';
-    const config: UniqueNamesGeneratorConfig = {
+    const config: Config = {
       separator: '_',
       length: 3,
       dictionaries: [['test'], ['default'], ['style']],
