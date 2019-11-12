@@ -12,6 +12,7 @@
     "format": "prettier --write src/**/*.ts",
     "prebuild": "rimraf dist && npm run format",
     "build": "microbundle",
+    "prepublishOnly": "npm run build",
     "prerelease": "npm run build",
     "contributors:add": "all-contributors add",
     "contributors:generate": "all-contributors generate",
