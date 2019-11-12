@@ -21,9 +21,9 @@ If you are using a version 3.x of the library, please refer to the
 Otherwise, for versions 1 & 2, please refer to the
 [v2 Docs](https://github.com/andreasonny83/unique-names-generator/blob/v2.0.2/README.md)
 
-### Migrating from v2 to v3
+### Migrating to v4
 
-If you want to migrate, from an older version of the library, to v4, please read the [Migration guide](#migration-guide)
+If you want to migrate, from an older version of the library to v4, please read the [Migration guide](#migration-guide)
 
 ## Prerequisites
 
@@ -44,7 +44,7 @@ $ npm --version
 
 - [Unique Names Generator](#unique-names-generator)
   - [Docs](#docs)
-    - [Migrating from v2 to v3](#migrating-from-v2-to-v3)
+    - [Migrating to v4](#migrating-to-v4)
   - [Prerequisites](#prerequisites)
   - [Table of contents](#table-of-contents)
   - [Installation](#installation)
