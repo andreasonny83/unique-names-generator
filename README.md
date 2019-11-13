@@ -11,19 +11,66 @@
 
 [![NPM](https://nodei.co/npm/unique-names-generator.png)](https://npmjs.org/package/unique-names-generator)
 
-> More than 28,000,000 name combinations
+> More than 50,000,000 name combinations out of the box
+
+## What is Unique name generator?
+
+Unique name generator is a tree-shakeable Node package for generating random and unique names.
+
+It comes with a list of dictionaries out of the box, but can also provide your custom ones.
 
 ## Docs
 
 This documentation is for the `unique-names-generator` v4.
+
 If you are using a version 3.x of the library, please refer to the
 [v3 Docs](https://github.com/andreasonny83/unique-names-generator/blob/v3.1.1/README.md)
-Otherwise, for versions 1 & 2, please refer to the
+
+For the version 1 & 2, please refer to the
 [v2 Docs](https://github.com/andreasonny83/unique-names-generator/blob/v2.0.2/README.md)
 
 ### Migrating to v4
 
 If you want to migrate, from an older version of the library to v4, please read the [Migration guide](#migration-guide)
+
+## Table of contents
+
+- [Unique Names Generator](#unique-names-generator)
+  - [What is Unique name generator?](#what-is-unique-name-generator)
+  - [Docs](#docs)
+    - [Migrating to v4](#migrating-to-v4)
+  - [Table of contents](#table-of-contents)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+  - [Usage](#usage)
+    - [Typescript support](#typescript-support)
+  - [API](#api)
+    - [uniqueNamesGenerator (options)](#uniquenamesgenerator-options)
+    - [options](#options)
+      - [dictionaries](#dictionaries)
+      - [separator](#separator)
+      - [length](#length)
+      - [style](#style)
+  - [Dictionaries available](#dictionaries-available)
+      - [Adjectives](#adjectives)
+      - [Animals](#animals)
+      - [Colors](#colors)
+      - [Countries](#countries)
+      - [Names](#names)
+      - [Star Wars](#star-wars)
+    - [Default dictionaries](#default-dictionaries)
+    - [Custom dictionaries](#custom-dictionaries)
+    - [Combining custom and provided dictionaries](#combining-custom-and-provided-dictionaries)
+  - [Migration guide](#migration-guide)
+    - [Migration guide from version 3 to version 4](#migration-guide-from-version-3-to-version-4)
+      - [Mandatory `dictionaries` config](#mandatory-dictionaries-config)
+    - [Migration guide from version 1 or 2](#migration-guide-from-version-1-or-2)
+      - [uniqueNamesGenerator](#uniquenamesgenerator)
+      - [Separator](#separator)
+      - [Short](#short)
+  - [Contributing](#contributing)
+  - [License](#license)
+  - [Contributors ✨](#contributors-%e2%9c%a8)
 
 ## Prerequisites
 
@@ -39,38 +86,6 @@ v7.10.1
 $ npm --version
 4.2.0
 ```
-
-## Table of contents
-
-- [Unique Names Generator](#unique-names-generator)
-  - [Docs](#docs)
-    - [Migrating to v4](#migrating-to-v4)
-  - [Prerequisites](#prerequisites)
-  - [Table of contents](#table-of-contents)
-  - [Installation](#installation)
-  - [Usage](#usage)
-    - [Typescript support](#typescript-support)
-  - [API](#api)
-    - [uniqueNamesGenerator(options)](#uniquenamesgeneratoroptions)
-    - [options](#options)
-      - [dictionaries](#dictionaries)
-      - [separator](#separator)
-      - [length](#length)
-      - [style](#style)
-  - [Examples](#examples)
-    - [Default dictionaries](#default-dictionaries)
-    - [Custom dictionaries](#custom-dictionaries)
-    - [Combining custom and provided dictionaries](#combining-custom-and-provided-dictionaries)
-  - [Migration guide](#migration-guide)
-    - [Migration guide from version 3 to version 4](#migration-guide-from-version-3-to-version-4)
-      - [Mandatory `dictionaries` config](#mandatory-dictionaries-config)
-    - [Migration guide from version 1 or 2](#migration-guide-from-version-1-or-2)
-      - [uniqueNamesGenerator](#uniquenamesgenerator)
-      - [Separator](#separator)
-      - [Short](#short)
-  - [Contributing](#contributing)
-  - [License](#license)
-  - [Contributors ✨](#contributors-%e2%9c%a8)
 
 ## Installation
 
@@ -96,7 +111,7 @@ const { uniqueNamesGenerator, adjectives, colors, animals } = require('unique-na
 const randomName = uniqueNamesGenerator({ dictionaries: [adjectives, colors, animals] }); // big_red_donkey
 
 const shortName = uniqueNamesGenerator({
-  dictionaries: [adjectives, colors, animals],
+  dictionaries: [adjectives, animals, colors], // colors can be omitted here as not used
   length: 2
 }); // big-donkey
 ```
@@ -110,7 +125,7 @@ inside your Typescript project.
 import { uniqueNamesGenerator, Config, adjectives, colors, animals } from 'unique-names-generator';
 
 const customConfig: Config = {
-  dictionaries: [adjectives, colors, animals],
+  dictionaries: [adjectives, colors],
   separator: '-',
   length: 2,
 };
@@ -124,7 +139,7 @@ const shortName: string = uniqueNamesGenerator(customConfig); // big-donkey
 
 ## API
 
-### uniqueNamesGenerator(options)
+### uniqueNamesGenerator (options)
 
 Returns a `string` with a random generated name
 
@@ -140,7 +155,7 @@ required: `true`
 
 This is an array of dictionaries. Each dictionary is an array of strings containing the words to use for generating the string.
 
-The default `adjectives, colors and animals` dictionaries can be imported from the library as a separate modules and provided in the desired order.
+The [provided dictionaries](#dictionaries-available) can be imported from the library as a separate modules and provided in the desired order.
 
 ```typescript
 import { uniqueNamesGenerator, adjectives, colors, animals } from 'unique-names-generator';
@@ -150,7 +165,7 @@ const shortName: string = uniqueNamesGenerator({
 }); // red_big_donkey
 ```
 
-Read more about the dictionaries in the [Examples](#examples) section.
+Read more about the dictionaries and how to use them, in the [Dictionaries](#dictionaries-available) section.
 
 #### separator
 
@@ -172,7 +187,8 @@ required: `false`
 Default: `3`
 
 The default value is set to `3` and it will return a name composed of 3 words.
-This values must be equal or minor to the number of [dictionaries](#dictionaries) defined (3 by default)
+This values must be equal or minor to the number of [dictionaries](#dictionaries-available) defined (3 by default).
+Setting the `length` to a value of `4` will throw an error when only 3 dictionaries are provided.
 
 #### style
 
@@ -205,7 +221,91 @@ const lowerCaseName: string = uniqueNamesGenerator({
 }); // red_big_donkey
 ```
 
-## Examples
+## Dictionaries available
+
+#### Adjectives
+
+A list of more than 1,400 adjectives ready for you to use
+
+```typescript
+import { uniqueNamesGenerator, Config, adjectives } from 'unique-names-generator';
+
+const config: Config = {
+  dictionaries: [adjectives]
+}
+
+const characterName: string = uniqueNamesGenerator(config); // big
+```
+
+#### Animals
+
+A list of more than 350 animals ready to use
+
+```typescript
+import { uniqueNamesGenerator, Config, animals } from 'unique-names-generator';
+
+const config: Config = {
+  dictionaries: [animals]
+}
+
+const characterName: string = uniqueNamesGenerator(config); // donkey
+```
+
+#### Colors
+
+A list of more than 50 different colors
+
+```typescript
+import { uniqueNamesGenerator, Config, colors } from 'unique-names-generator';
+
+const config: Config = {
+  dictionaries: [colors]
+}
+
+const characterName: string = uniqueNamesGenerator(config); // red
+```
+
+#### Countries
+
+A list of more than 250 different countries
+
+```typescript
+import { uniqueNamesGenerator, Config, countries } from 'unique-names-generator';
+
+const config: Config = {
+  dictionaries: [countries]
+}
+
+const characterName: string = uniqueNamesGenerator(config); // United Arab Emirates
+```
+
+#### Names
+
+A list of more than 4,900 unique names
+
+```typescript
+import { uniqueNamesGenerator, Config, names } from 'unique-names-generator';
+
+const config: Config = {
+  dictionaries: [names]
+}
+
+const characterName: string = uniqueNamesGenerator(config); // Winona
+```
+
+#### Star Wars
+
+A list of more than 80 unique character names from Star Wars
+
+```typescript
+import { uniqueNamesGenerator, Config, starWars } from 'unique-names-generator';
+
+const config: Config = {
+  dictionaries: [starWars]
+}
+
+const characterName: string = uniqueNamesGenerator(config); // Han Solo
+```
 
 ### Default dictionaries
 
@@ -233,7 +333,7 @@ const characterName: string = uniqueNamesGenerator(config); // red_big_donkey
 You might want to provide your custom dictionaries to use for generating your unique names,
 in order to meet your business requirements.
 
-You can easily do that using the [dictionaries](#dictionaries) option.
+You can easily do that using the [dictionaries](#dictionaries-available) option.
 
 ```typescript
 import { uniqueNamesGenerator } from 'unique-names-generator';
@@ -300,7 +400,7 @@ You must now explicitly provide the library with the dictionaries to use.
 This is for improving flexibility and allowing tree-shaking to remove the unused dictionaries from
 your bundle size.
 
-Read more about the dictionaries in the [Examples](#examples) section.
+Read more about the dictionaries in the [Dictionaries](dictionaries-available) section.
 
 **v3**
 
