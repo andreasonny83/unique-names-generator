@@ -1,4 +1,4 @@
-import { uniqueNamesGenerator, adjectives, colors, animals, Config } from './index';
+import { uniqueNamesGenerator, Config, adjectives, colors, animals } from '.';
 
 describe('unique-names-generator', () => {
   it('should generate a random name', () => {
