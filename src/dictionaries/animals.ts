@@ -375,4 +375,5 @@ export default [
   'llama',
   'sheep',
   'yak',
+  'unicorn',
 ];
