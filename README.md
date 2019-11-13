@@ -17,7 +17,7 @@
 
 Unique name generator is a tree-shakeable Node package for generating random and unique names.
 
-It comes with a list of dictionaries out of the box, but can also provide your custom ones.
+It comes with a list of dictionaries out of the box, but you can also provide your custom ones.
 
 ## Docs
 
