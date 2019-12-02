@@ -12,6 +12,7 @@ describe('randomNameGenerator', () => {
       dictionaries: [[], [], []],
       separator: '_',
       length: 3,
+      random: false,
     };
 
     // Act
@@ -27,6 +28,7 @@ describe('randomNameGenerator', () => {
       dictionaries: [[], [], []],
       separator: '_',
       length: 3,
+      random: false,
     };
 
     // Act
@@ -42,6 +44,7 @@ describe('randomNameGenerator', () => {
       dictionaries: [[], [], []],
       separator: '-',
       length: 3,
+      random: false,
     };
 
     // Act
@@ -58,6 +61,7 @@ describe('randomNameGenerator', () => {
       dictionaries: [[], [], []],
       separator: '_',
       length: 3,
+      random: false,
     };
 
     // Act
@@ -74,6 +78,7 @@ describe('randomNameGenerator', () => {
       dictionaries: [['a'], ['b'], ['c']],
       separator: '-',
       length: 3,
+      random: false,
     };
     const expected = 'a-b-c';
 
@@ -91,6 +96,7 @@ describe('randomNameGenerator', () => {
       dictionaries: [['a'], ['b'], ['c']],
       separator: '_',
       length: 3,
+      random: false,
     };
     const expected = 'a_b_c';
 
@@ -111,6 +117,7 @@ describe('randomNameGenerator', () => {
       dictionaries: [adjectives, colors, subjects],
       separator: '-',
       length: 3,
+      random: false,
     };
 
     // Act
@@ -130,6 +137,7 @@ describe('randomNameGenerator', () => {
       dictionaries: [adjectives, subjects, colors],
       separator: '-',
       length: 2,
+      random: false,
     };
 
     // Act
@@ -160,6 +168,8 @@ describe('randomNameGenerator', () => {
       dictionaries: [],
       length: 2,
       separator: '_',
+      random: false,
+
     };
 
     // Act
@@ -176,6 +186,7 @@ describe('randomNameGenerator', () => {
       dictionaries: [],
       length: -1,
       separator: '_',
+      random: false,
     };
 
     // Act
@@ -185,4 +196,26 @@ describe('randomNameGenerator', () => {
     // Assert
     expect(() => expected()).toThrowErrorMatchingSnapshot();
   });
+
+  it('should use dictionaries in random order', () => {
+    const adjectives = ['Adjective1', 'Adjective2'];
+    const colors = ['Color1', 'Color2'];
+    const subjects = ['Animal1', 'Animal2'];
+
+    // Arrange
+    const config: Config = {
+      dictionaries: [adjectives, colors, subjects],
+      length: 2,
+      separator: '_',
+      random: true,
+    };
+
+    // Act
+    const uniqueNamesGenerator = new UniqueNamesGenerator(config);
+    const expected = () => uniqueNamesGenerator.generate();
+
+    // Assert
+    // expect(() => expected()).toThrowErrorMatchingSnapshot();
+  });
+
 });
