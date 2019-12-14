@@ -7,24 +7,21 @@ export interface Config {
   separator: string;
   length: number;
   dictionaries: string[][];
-  random: boolean,
+  shuffleDictionaries: boolean,
 }
 
 export class UniqueNamesGenerator {
   private dictionaries: string[][];
   private length: number;
   private separator: string;
-  private random: boolean;
-  private generateRandomNumber(low: number = 0, high: number) {
-    return Math.floor(Math.random()*(high - low)) + low;
-  }
+  private shuffleDictionaries: boolean;
   constructor(config: Config) {
-    const { length, separator, dictionaries, random } = config;
+    const { length, separator, dictionaries, shuffleDictionaries } = config;
 
     this.dictionaries = dictionaries;
     this.separator = separator;
     this.length = length;
-    this.random = random;
+    this.shuffleDictionaries = shuffleDictionaries;
   }
 
   public generate(): string {
@@ -34,6 +31,7 @@ export class UniqueNamesGenerator {
           'the "dictionary" field empty in the config object',
       );
     }
+
 
     if (this.length <= 0) {
       throw new Error('Invalid length provided');
@@ -47,22 +45,19 @@ export class UniqueNamesGenerator {
           }`,
       );
     }
-    let dictionariesToUse: string[][];
-    if (this.random) {
-      let randomDictionaries: string[][] = [];
-      for (let index = 0; index < this.length; index++) {
-        const randomDictionary = this.dictionaries[this.generateRandomNumber(0, this.length)];
-        randomDictionaries = [...randomDictionaries, randomDictionary];
+    const dictionariesToUse = this.dictionaries.sort(() => {
+      if (this.shuffleDictionaries) {
+        return this.generateRandomNumber(0, this.length);
       }
-      dictionariesToUse = randomDictionaries;
-    } else {
-      dictionariesToUse = this.dictionaries.slice(0, this.length);
-    }
+      return 0;
+    });
     return dictionariesToUse.reduce((acc: string, curr: string[]) => {
       const rnd = this.generateRandomNumber(0, curr.length)
-      console.log(curr, rnd)
       const word = curr[rnd];
       return acc ? `${acc}${this.separator}${word}` : `${word}`;
     }, '');
+  }
+  private generateRandomNumber(low: number = 0, high: number) {
+    return Math.floor(Math.random()*(high - low)) + low;
   }
 }

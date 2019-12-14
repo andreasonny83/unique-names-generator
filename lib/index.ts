@@ -14,7 +14,7 @@ const defaultConfig: Config = {
   separator: '_',
   length: 3,
   dictionaries: [adjectives, colors, animals],
-  random: false,
+  shuffleDictionaries: false,
 };
 
 export const uniqueNamesGenerator = (customConfig: UniqueNamesGeneratorConfig = {}): string => {

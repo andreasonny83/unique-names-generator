@@ -12,7 +12,7 @@ describe('randomNameGenerator', () => {
       dictionaries: [[], [], []],
       separator: '_',
       length: 3,
-      random: false,
+      shuffleDictionaries: false,
     };
 
     // Act
@@ -28,7 +28,7 @@ describe('randomNameGenerator', () => {
       dictionaries: [[], [], []],
       separator: '_',
       length: 3,
-      random: false,
+      shuffleDictionaries: false,
     };
 
     // Act
@@ -44,7 +44,7 @@ describe('randomNameGenerator', () => {
       dictionaries: [[], [], []],
       separator: '-',
       length: 3,
-      random: false,
+      shuffleDictionaries: false,
     };
 
     // Act
@@ -61,7 +61,7 @@ describe('randomNameGenerator', () => {
       dictionaries: [[], [], []],
       separator: '_',
       length: 3,
-      random: false,
+      shuffleDictionaries: false,
     };
 
     // Act
@@ -72,13 +72,13 @@ describe('randomNameGenerator', () => {
     expect(typeof response).toEqual('string');
   });
 
-  it('generate: should generate a random name', () => {
+  it('generate: should generate a shuffleDictionaries name', () => {
     // Arrange
     const config: Config = {
       dictionaries: [['a'], ['b'], ['c']],
       separator: '-',
       length: 3,
-      random: false,
+      shuffleDictionaries: false,
     };
     const expected = 'a-b-c';
 
@@ -96,7 +96,7 @@ describe('randomNameGenerator', () => {
       dictionaries: [['a'], ['b'], ['c']],
       separator: '_',
       length: 3,
-      random: false,
+      shuffleDictionaries: false,
     };
     const expected = 'a_b_c';
 
@@ -108,7 +108,7 @@ describe('randomNameGenerator', () => {
     expect(response).toEqual(expected);
   });
 
-  it('should generate random combinations', () => {
+  it('should generate shuffleDictionaries combinations', () => {
     // Arrange
     const adjectives = ['Adjective1', 'Adjective2', 'Adjective3'];
     const colors = ['Color1', 'Color2', 'Color3'];
@@ -117,7 +117,7 @@ describe('randomNameGenerator', () => {
       dictionaries: [adjectives, colors, subjects],
       separator: '-',
       length: 3,
-      random: false,
+      shuffleDictionaries: false,
     };
 
     // Act
@@ -137,7 +137,7 @@ describe('randomNameGenerator', () => {
       dictionaries: [adjectives, subjects, colors],
       separator: '-',
       length: 2,
-      random: false,
+      shuffleDictionaries: false,
     };
 
     // Act
@@ -168,7 +168,7 @@ describe('randomNameGenerator', () => {
       dictionaries: [],
       length: 2,
       separator: '_',
-      random: false,
+      shuffleDictionaries: false,
 
     };
 
@@ -186,7 +186,7 @@ describe('randomNameGenerator', () => {
       dictionaries: [],
       length: -1,
       separator: '_',
-      random: false,
+      shuffleDictionaries: false,
     };
 
     // Act
@@ -197,25 +197,52 @@ describe('randomNameGenerator', () => {
     expect(() => expected()).toThrowErrorMatchingSnapshot();
   });
 
-  it('should use dictionaries in random order', () => {
-    const adjectives = ['Adjective1', 'Adjective2'];
-    const colors = ['Color1', 'Color2'];
-    const subjects = ['Animal1', 'Animal2'];
+  it.only('should always use the same dictionaries when shuffleDictionaries is disabled', () => {
+    const adjectives = ['Adjective'];
+    const colors = ['Color'];
+    const subjects = ['Animal'];
 
     // Arrange
     const config: Config = {
       dictionaries: [adjectives, colors, subjects],
       length: 2,
       separator: '_',
-      random: true,
+      shuffleDictionaries: false,
     };
 
     // Act
     const uniqueNamesGenerator = new UniqueNamesGenerator(config);
-    const expected = () => uniqueNamesGenerator.generate();
+
+    const res1 = uniqueNamesGenerator.generate();
+    const res2 = uniqueNamesGenerator.generate();
+    const res3 = uniqueNamesGenerator.generate();
 
     // Assert
-    // expect(() => expected()).toThrowErrorMatchingSnapshot();
+    expect(res1).toEqual(res2);
+    expect(res1).toEqual(res3);
+  });
+
+  it('should shuffle the provided dictionaries when shuffleDictionaries is enabled', () => {
+    const adjectives = ['Adjective'];
+    const colors = ['Color'];
+    const subjects = ['Animal'];
+
+    // Arrange
+    const config: Config = {
+      dictionaries: [adjectives, colors, subjects],
+      length: 2,
+      separator: '_',
+      shuffleDictionaries: true,
+    };
+
+    // Act
+    const uniqueNamesGenerator = new UniqueNamesGenerator(config);
+
+    const res1 = uniqueNamesGenerator.generate();
+    const res2 = uniqueNamesGenerator.generate();
+
+    // Assert
+    expect(res1).not.toEqual(res2);
   });
 
 });
