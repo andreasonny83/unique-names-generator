@@ -72,7 +72,7 @@ describe('randomNameGenerator', () => {
     expect(typeof response).toEqual('string');
   });
 
-  it('generate: should generate a shuffleDictionaries name', () => {
+  it('generate: should generate a random name', () => {
     // Arrange
     const config: Config = {
       dictionaries: [['a'], ['b'], ['c']],
@@ -108,7 +108,7 @@ describe('randomNameGenerator', () => {
     expect(response).toEqual(expected);
   });
 
-  it('should generate shuffleDictionaries combinations', () => {
+  it('should generate random combinations', () => {
     // Arrange
     const adjectives = ['Adjective1', 'Adjective2', 'Adjective3'];
     const colors = ['Color1', 'Color2', 'Color3'];
