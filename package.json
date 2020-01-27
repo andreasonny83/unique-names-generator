@@ -43,7 +43,7 @@
     "@babel/core": "^7.7.2",
     "@babel/preset-env": "^7.7.1",
     "@babel/preset-typescript": "^7.7.2",
-    "@types/jest": "^24.0.22",
+    "@types/jest": "^25.1.0",
     "@typescript-eslint/eslint-plugin": "^2.7.0",
     "@typescript-eslint/parser": "^2.7.0",
     "all-contributors-cli": "^6.10.0",
