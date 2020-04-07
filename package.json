@@ -58,5 +58,9 @@
     "prettier-eslint": "^9.0.1",
     "rimraf": "^3.0.1",
     "typescript": "^3.7.5"
+  },
+  "dependencies": {
+    "@types/seedrandom": "^2.4.28",
+    "seedrandom": "^3.0.5"
   }
 }
