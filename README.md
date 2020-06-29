@@ -51,6 +51,7 @@ If you want to migrate, from an older version of the library to v4, please read 
       - [separator](#separator)
       - [length](#length)
       - [style](#style)
+      - [seed](#seed)
   - [Dictionaries available](#dictionaries-available)
       - [Adjectives](#adjectives)
       - [Animals](#animals)
@@ -212,14 +213,22 @@ const capitalizedName: string = uniqueNamesGenerator({
 
 const upperCaseName: string = uniqueNamesGenerator({
   dictionaries: [colors, adjectives, animals],
-  style: 'capital'
+  style: 'upperCase'
 }); // RED_BIG_DONKEY
 
 const lowerCaseName: string = uniqueNamesGenerator({
   dictionaries: [colors, adjectives, animals],
-  style: 'capital'
+  style: 'lowerCase'
 }); // red_big_donkey
 ```
+
+#### seed
+
+Type: `number`
+
+required: `false`
+
+A seed is used when wanting to deterministically generate a name. As long as the provided seed is the same the generated name will also always be the same.
 
 ## Dictionaries available
 
