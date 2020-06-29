@@ -1,5 +1,9 @@
 # Unique Names Generator
 
+
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-13-orange.svg?style=flat-square)](#contributors)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 [![Build Status](https://travis-ci.com/andreasonny83/unique-names-generator.svg?branch=master)](https://travis-ci.com/andreasonny83/unique-names-generator)
 [![](https://img.shields.io/npm/v/unique-names-generator.svg)](https://npmjs.org/package/unique-names-generator)
 [![](https://img.shields.io/npm/l/unique-names-generator.svg)](https://github.com/andreasonny83/unique-names-generator/blob/master/LICENSE)
@@ -69,6 +73,7 @@ If you want to migrate, from an older version of the library to v4, please read 
       - [Short](#short)
   - [Contributing](#contributing)
   - [License](#license)
+  - [Contributors ✨](#contributors-)
 
 ## Prerequisites
 
@@ -520,3 +525,13 @@ Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduc
 ## License
 
 [MIT License](https://andreasonny.mit-license.org/2018) © Andrea SonnY
+
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore -->
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
