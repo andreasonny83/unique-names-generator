@@ -135,6 +135,33 @@ describe('randomNameGenerator', () => {
     expect(expected).toMatch(/^Adjective[123]-Animal[123]$/);
   });
 
+  it('should generate the same name given an equal seed', () => {
+    // Arrange
+    const adjectives = ['Adjective1', 'Adjective2', 'Adjective3'];
+    const colors = ['Color1', 'Color2', 'Color3'];
+    const subjects = ['Animal1', 'Animal2', 'Animal3'];
+    const config: Config = {
+      dictionaries: [adjectives, subjects, colors],
+      separator: '-',
+      seed: 120498,
+    };
+
+    // Act
+    let uniqueNamesGenerator = new UniqueNamesGenerator(config);
+    const name1 = uniqueNamesGenerator.generate();
+    uniqueNamesGenerator = new UniqueNamesGenerator(config);
+    const name2 = uniqueNamesGenerator.generate();
+    uniqueNamesGenerator = new UniqueNamesGenerator(config);
+    const name3 = uniqueNamesGenerator.generate();
+    uniqueNamesGenerator = new UniqueNamesGenerator(config);
+    const name4 = uniqueNamesGenerator.generate();
+
+    // Assert
+    expect(name1).toEqual(name2);
+    expect(name1).toEqual(name3);
+    expect(name1).toEqual(name4);
+  });
+
   it('should throw an error when there are no dictionaries', () => {
     // Arrange
     const config = {
