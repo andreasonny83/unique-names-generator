@@ -18,7 +18,10 @@
       "contributions": [
         "question",
         "code",
-        "projectManagement"
+        "projectManagement",
+        "ideas",
+        "content",
+        "doc"
       ]
     },
     {
@@ -69,5 +72,6 @@
       ]
     }
   ],
-  "contributorsPerLine": 7
+  "contributorsPerLine": 7,
+  "skipCi": true
 }
