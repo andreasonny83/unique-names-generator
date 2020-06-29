@@ -212,12 +212,12 @@ const capitalizedName: string = uniqueNamesGenerator({
 
 const upperCaseName: string = uniqueNamesGenerator({
   dictionaries: [colors, adjectives, animals],
-  style: 'capital'
+  style: 'upperCase'
 }); // RED_BIG_DONKEY
 
 const lowerCaseName: string = uniqueNamesGenerator({
   dictionaries: [colors, adjectives, animals],
-  style: 'capital'
+  style: 'lowerCase'
 }); // red_big_donkey
 ```
 
