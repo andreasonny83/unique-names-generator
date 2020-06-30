@@ -1,6 +1,6 @@
 # Unique Names Generator
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-7-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-8-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 [![Build Status](https://travis-ci.com/andreasonny83/unique-names-generator.svg?branch=master)](https://travis-ci.com/andreasonny83/unique-names-generator)
@@ -540,6 +540,9 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/ajainuary"><img src="https://avatars1.githubusercontent.com/u/30972152?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Anurag Jain</b></sub></a><br /><a href="#ideas-ajainuary" title="Ideas, Planning, & Feedback">🤔</a></td>
     <td align="center"><a href="https://github.com/digibake"><img src="https://avatars1.githubusercontent.com/u/6882093?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Digibake</b></sub></a><br /><a href="https://github.com/andreasonny83/unique-names-generator/issues?q=author%3Adigibake" title="Bug reports">🐛</a></td>
     <td align="center"><a href="https://chasemoskal.com/"><img src="https://avatars1.githubusercontent.com/u/7145590?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Chase Moskal</b></sub></a><br /><a href="#ideas-chase-moskal" title="Ideas, Planning, & Feedback">🤔</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/tholst"><img src="https://avatars3.githubusercontent.com/u/2027794?v=4?s=100" width="100px;" alt=""/><br /><sub><b>tholst</b></sub></a><br /><a href="https://github.com/andreasonny83/unique-names-generator/commits?author=tholst" title="Documentation">📖</a></td>
   </tr>
 </table>
 

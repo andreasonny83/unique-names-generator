@@ -79,6 +79,15 @@
       "contributions": [
         "ideas"
       ]
+    },
+    {
+      "login": "tholst",
+      "name": "tholst",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/2027794?v=4",
+      "profile": "https://github.com/tholst",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7
