@@ -1,6 +1,6 @@
 # Unique Names Generator
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-8-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-9-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 [![Build Status](https://travis-ci.com/andreasonny83/unique-names-generator.svg?branch=master)](https://travis-ci.com/andreasonny83/unique-names-generator)
@@ -543,6 +543,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   </tr>
   <tr>
     <td align="center"><a href="https://github.com/tholst"><img src="https://avatars3.githubusercontent.com/u/2027794?v=4?s=100" width="100px;" alt=""/><br /><sub><b>tholst</b></sub></a><br /><a href="https://github.com/andreasonny83/unique-names-generator/commits?author=tholst" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/shianmiin"><img src="https://avatars0.githubusercontent.com/u/11787231?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Shianmiin</b></sub></a><br /><a href="https://github.com/andreasonny83/unique-names-generator/commits?author=shianmiin" title="Code">💻</a> <a href="#ideas-shianmiin" title="Ideas, Planning, & Feedback">🤔</a></td>
   </tr>
 </table>
 
