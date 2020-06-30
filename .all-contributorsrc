@@ -70,6 +70,15 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "chase-moskal",
+      "name": "Chase Moskal",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/7145590?v=4",
+      "profile": "https://chasemoskal.com/",
+      "contributions": [
+        "ideas"
+      ]
     }
   ],
   "contributorsPerLine": 7
