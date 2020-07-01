@@ -1,4 +1,4 @@
-import { uniqueNamesGenerator, Config, adjectives, colors, animals } from '.';
+import { uniqueNamesGenerator, Config, adjectives, colors, animals, NumberDictionary } from '.';
 
 describe('unique-names-generator', () => {
   it('should generate a random name', () => {
@@ -217,5 +217,75 @@ describe('unique-names-generator', () => {
 
     // Assert
     expect(result).toEqual(expectedName);
+  });
+
+  it('should use a number dictionary', () => {
+    // Arrange
+    const numberDictionary = NumberDictionary.generate();
+    const config: Config = {
+      dictionaries: [['Dangerous'], ['Snake'], numberDictionary],
+      length: 3,
+      separator: '',
+      style: 'capital',
+    };
+
+    // Act
+    const result = uniqueNamesGenerator(config);
+
+    // Assert
+    expect(result).toMatch(/^DangerousSnake\d+$/);
+  });
+
+  it('should use a number dictionary with a minimum and a maximum value', () => {
+    // Arrange
+    const numberDictionary = NumberDictionary.generate({ min: 100, max: 999 });
+    const config: Config = {
+      dictionaries: [['Dangerous'], ['Snake'], numberDictionary],
+      length: 3,
+      separator: '',
+      style: 'capital',
+    };
+
+    // Act
+    const result = uniqueNamesGenerator(config);
+
+    // Assert
+    expect(result).toMatch(/^DangerousSnake\d{3}$/);
+  });
+
+  it('should use a number dictionary with a given length', () => {
+    // Arrange
+    const numberDictionary = NumberDictionary.generate({ length: 6 });
+    const config: Config = {
+      dictionaries: [['Dangerous'], ['Snake'], numberDictionary],
+      length: 3,
+      separator: '',
+      style: 'capital',
+    };
+
+    // Act
+    const result = uniqueNamesGenerator(config);
+
+    // Assert
+    expect(result).toMatch(/^DangerousSnake\d{6}$/);
+  });
+
+  it('should use a number dictionary with a given length', () => {
+    // Arrange
+    const firstRandomNumber = NumberDictionary.generate({ length: 2 });
+    const secondRandomNumber = NumberDictionary.generate({ min: 100, max: 999 });
+
+    const config: Config = {
+      dictionaries: [firstRandomNumber, ['Snake'], secondRandomNumber],
+      length: 3,
+      separator: '',
+      style: 'capital',
+    };
+
+    // Act
+    const result = uniqueNamesGenerator(config);
+
+    // Assert
+    expect(result).toMatch(/^\d{2}Snake\d{3}$/);
   });
 });

@@ -54,6 +54,7 @@ If you want to migrate, from an older version of the library to v4, please read 
       - [style](#style)
       - [seed](#seed)
   - [Dictionaries available](#dictionaries-available)
+      - [Numbers](#numbers)
       - [Adjectives](#adjectives)
       - [Animals](#animals)
       - [Colors](#colors)
@@ -62,6 +63,13 @@ If you want to migrate, from an older version of the library to v4, please read 
       - [Star Wars](#star-wars)
     - [Default dictionaries](#default-dictionaries)
     - [Custom dictionaries](#custom-dictionaries)
+    - [Numbers Dictionary](#numbers-dictionary)
+  - [Numbers Dictionary API](#numbers-dictionary-api)
+    - [generate (options)](#generate-options)
+    - [options](#options-1)
+      - [min](#min)
+      - [max](#max)
+      - [length](#length-1)
     - [Combining custom and provided dictionaries](#combining-custom-and-provided-dictionaries)
   - [Migration guide](#migration-guide)
     - [Migration guide from version 3 to version 4](#migration-guide-from-version-3-to-version-4)
@@ -72,6 +80,7 @@ If you want to migrate, from an older version of the library to v4, please read 
       - [Short](#short)
   - [Contributing](#contributing)
   - [License](#license)
+  - [Contributors ✨](#contributors-)
 
 ## Prerequisites
 
@@ -232,6 +241,10 @@ A seed is used when wanting to deterministically generate a name. As long as the
 
 ## Dictionaries available
 
+#### Numbers
+
+This is a dynamic dictionary. Read more in the [Numbers Dictionary](#numbers-dictionary) section
+
 #### Adjectives
 
 A list of more than 1,400 adjectives ready for you to use
@@ -364,6 +377,65 @@ const characterName: string = uniqueNamesGenerator({
   separator: ' '
 }); // Green Luke Skywalker
 ```
+
+### Numbers Dictionary
+
+You can easily generate random numbers inside your unique name using the Numbers dictionary helper.
+
+```typescript
+import { uniqueNamesGenerator, NumberDictionary } from 'unique-names-generator';
+
+const numberDictionary = NumberDictionary.generate({ min: 100, max: 999 });
+const characterName: string = uniqueNamesGenerator({
+dictionaries: [['Dangerous'], ['Snake'], numberDictionary],
+  length: 3,
+  separator: '',
+  style: 'capital'
+}); // DangerousSnake123
+```
+
+## Numbers Dictionary API
+
+### generate (options)
+
+Returns a `string` with a random generated number between 1 and 999
+
+### options
+
+Type: `Config`
+
+#### min
+
+Type: `number`
+
+required: `false`
+
+default: `1`
+
+The minimum value to be returned as a random number
+
+#### max
+
+Type: `number`
+
+required: `false`
+
+default: `999`
+
+The maximum value to be returned as a random number
+
+#### length
+
+Type: `number`
+
+required: `false`
+
+The length of the random generated number to be returned.
+
+Setting a length of 3 will always return a random number between `100` and `999`. This is the same as setting `100` and `999` as `min` and `max` option.
+
+**Note** If set, this will ignore any `min` and `max` options provided.
+
 
 ### Combining custom and provided dictionaries
 
