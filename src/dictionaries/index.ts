@@ -4,5 +4,6 @@ import colors from './colors';
 import countries from './countries';
 import names from './names';
 import starWars from './star-wars';
+import { NumberDictionary } from './numbers';
 
-export { adjectives, animals, colors, countries, names, starWars };
+export { adjectives, animals, colors, countries, names, starWars, NumberDictionary };

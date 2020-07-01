@@ -1,4 +1,5 @@
 import { UniqueNamesGenerator, Config } from './unique-names-generator.constructor';
+import { NumberDictionary } from './dictionaries';
 
 describe('randomNameGenerator', () => {
   it('should exists', () => {
@@ -282,6 +283,29 @@ describe('randomNameGenerator', () => {
       const result = uniqueNamesGenerator.generate();
 
       // Assert
+      expect(result).toEqual(expectedName);
+    });
+
+    it('should use a number dictionary', () => {
+      jest.spyOn(NumberDictionary, 'generate').mockReturnValue(['123']);
+
+      // Arrange
+      const numberDictionary = NumberDictionary.generate();
+      const config: Config = {
+        dictionaries: [['Dangerous'], ['Snake'], numberDictionary],
+        length: 3,
+        separator: '',
+        style: 'capital',
+      };
+
+      const expectedName = 'DangerousSnake123';
+
+      // Act
+      const uniqueNamesGenerator = new UniqueNamesGenerator(config);
+      const result = uniqueNamesGenerator.generate();
+
+      // Assert
+      expect(NumberDictionary.generate).toHaveBeenCalled();
       expect(result).toEqual(expectedName);
     });
   });

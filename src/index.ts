@@ -1,3 +1,11 @@
-export * from './unique-names-generator';
+export { uniqueNamesGenerator } from './unique-names-generator';
 export { Config } from './unique-names-generator.constructor';
-export * from './dictionaries/index';
+export {
+  adjectives,
+  animals,
+  colors,
+  countries,
+  names,
+  starWars,
+  NumberDictionary,
+} from './dictionaries/index';
