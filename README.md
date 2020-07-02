@@ -6,7 +6,7 @@
 [![Build Status](https://travis-ci.com/andreasonny83/unique-names-generator.svg?branch=master)](https://travis-ci.com/andreasonny83/unique-names-generator)
 [![](https://img.shields.io/npm/v/unique-names-generator.svg)](https://npmjs.org/package/unique-names-generator)
 [![](https://img.shields.io/npm/l/unique-names-generator.svg)](https://github.com/andreasonny83/unique-names-generator/blob/master/LICENSE)
-[![Greenkeeper badge](https://badges.greenkeeper.io/andreasonny83/unique-names-generator.svg)](https://greenkeeper.io/)
+[![Known Vulnerabilities](https://snyk.io/test/github/andreasonny83/unique-names-generator/badge.svg?targetFile=package.json)](https://snyk.io/test/github/andreasonny83/unique-names-generator?targetFile=package.json)
 [![](https://img.shields.io/npm/dt/unique-names-generator.svg)](https://npmjs.org/package/unique-names-generator)
 [![devDependencies Status](https://david-dm.org/andreasonny83/unique-names-generator/dev-status.svg)](https://david-dm.org/andreasonny83/unique-names-generator?type=dev)
 
