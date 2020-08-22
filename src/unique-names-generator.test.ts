@@ -14,6 +14,36 @@ describe('unique-names-generator', () => {
     expect(response).toBeDefined();
   });
 
+  it('generate: should generate a random name given only 2 dictionaries', () => {
+    // Arrange
+    const config: Config = {
+      dictionaries: [['a'], ['b']],
+      separator: '-',
+    };
+    const expected = 'a-b';
+
+    // Act
+    const response = uniqueNamesGenerator(config);
+
+    // Assert
+    expect(response).toEqual(expected);
+  });
+
+  it('generate: should generate a random name given only 1 dictionary', () => {
+    // Arrange
+    const config: Config = {
+      dictionaries: [['a']],
+      separator: '-',
+    };
+    const expected = 'a';
+
+    // Act
+    const response = uniqueNamesGenerator(config);
+
+    // Assert
+    expect(response).toEqual(expected);
+  });
+
   it('should generate a string composed by 3 words underscore separated', () => {
     // Arrange
     const config: Config = {

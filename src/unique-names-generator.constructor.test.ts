@@ -69,9 +69,40 @@ describe('randomNameGenerator', () => {
     const config: Config = {
       dictionaries: [['a'], ['b'], ['c']],
       separator: '-',
-      length: 3,
     };
     const expected = 'a-b-c';
+
+    // Act
+    const uniqueNamesGenerator = new UniqueNamesGenerator(config);
+    const response = uniqueNamesGenerator.generate();
+
+    // Assert
+    expect(response).toEqual(expected);
+  });
+
+  it('generate: should generate a random name given only 2 dictionaries', () => {
+    // Arrange
+    const config: Config = {
+      dictionaries: [['a'], ['b']],
+      separator: '-',
+    };
+    const expected = 'a-b';
+
+    // Act
+    const uniqueNamesGenerator = new UniqueNamesGenerator(config);
+    const response = uniqueNamesGenerator.generate();
+
+    // Assert
+    expect(response).toEqual(expected);
+  });
+
+  it('generate: should generate a random name given only 1 dictionary', () => {
+    // Arrange
+    const config: Config = {
+      dictionaries: [['a']],
+      separator: '-',
+    };
+    const expected = 'a';
 
     // Act
     const uniqueNamesGenerator = new UniqueNamesGenerator(config);
@@ -213,7 +244,7 @@ describe('randomNameGenerator', () => {
     it('should return a lower case formatted name when style is set to "lowerCase"', () => {
       // Arrange
       const config: Config = {
-        dictionaries: [['test'], ['default'], ['style']],
+        dictionaries: [['TEST'], ['default'], ['style']],
         length: 3,
         separator: '_',
         style: 'lowerCase',
@@ -258,6 +289,25 @@ describe('randomNameGenerator', () => {
       };
 
       const expectedName = 'TEST_DEFAULT_STYLE';
+
+      // Act
+      const uniqueNamesGenerator = new UniqueNamesGenerator(config);
+      const result = uniqueNamesGenerator.generate();
+
+      // Assert
+      expect(result).toEqual(expectedName);
+    });
+
+    it('should return an upper case formatted name even when some number dictionaries are present', () => {
+      // Arrange
+      const config: Config = {
+        dictionaries: [['test'], ['default'], NumberDictionary.generate({ min: 1, max: 1 })],
+        length: 3,
+        separator: '_',
+        style: 'upperCase',
+      };
+
+      const expectedName = 'TEST_DEFAULT_1';
 
       // Act
       const uniqueNamesGenerator = new UniqueNamesGenerator(config);

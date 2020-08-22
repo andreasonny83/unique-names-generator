@@ -7,15 +7,19 @@ import { UniqueNamesGenerator, Config } from './unique-names-generator.construct
 
 const defaultConfig: Config = {
   separator: '_',
-  length: 3,
   dictionaries: [],
 };
 
 export const uniqueNamesGenerator = (customConfig: Config): string => {
+  const dictionaries = [
+    ...((customConfig && customConfig.dictionaries) || defaultConfig.dictionaries),
+  ];
+
   const config: Config = {
     ...defaultConfig,
     ...customConfig,
-    dictionaries: [...((customConfig && customConfig.dictionaries) || defaultConfig.dictionaries)],
+    length: (customConfig && customConfig.length) || dictionaries.length,
+    dictionaries,
   };
 
   if (!customConfig || !customConfig.dictionaries || !customConfig.dictionaries.length) {
