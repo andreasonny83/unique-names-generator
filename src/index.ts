@@ -5,6 +5,7 @@ export {
   animals,
   colors,
   countries,
+  languages,
   names,
   starWars,
   NumberDictionary,
