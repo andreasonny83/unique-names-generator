@@ -323,6 +323,8 @@ export default [
   'personal',
   'hard',
   'private',
+  'protestant',
+  'christian',
   'poor',
   'financial',
   'wide',
