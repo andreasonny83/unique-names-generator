@@ -630,13 +630,14 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   </tr>
   <tr>
     <td align="center"><a href="https://github.com/tholst"><img src="https://avatars3.githubusercontent.com/u/2027794?v=4?s=100" width="100px;" alt=""/><br /><sub><b>tholst</b></sub></a><br /><a href="https://github.com/andreasonny83/unique-names-generator/commits?author=tholst" title="Documentation">📖</a></td>
-    <td align="center"><a href="https://github.com/shianmiin"><img src="https://avatars0.githubusercontent.com/u/11787231?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Shianmiin</b></sub></a><br /><a href="https://github.com/andreasonny83/unique-names-generator/commits?author=shianmiin" title="Code">💻</a> <a href="#ideas-shianmiin" title="Ideas, Planning, & Feedback">🤔</a></td>
     <td align="center"><a href="https://github.com/Gusten"><img src="https://avatars2.githubusercontent.com/u/1529107?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Johan Gustafsson</b></sub></a><br /><a href="https://github.com/andreasonny83/unique-names-generator/commits?author=Gusten" title="Code">💻</a> <a href="#ideas-Gusten" title="Ideas, Planning, & Feedback">🤔</a></td>
+    <td align="center"><a href="https://alex.codes/"><img src="https://avatars.githubusercontent.com/u/5101376?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Alex Wild</b></sub></a><br /><a href="https://github.com/andreasonny83/unique-names-generator/issues?q=author%3Aajwild" title="Bug reports">🐛</a> <a href="https://github.com/andreasonny83/unique-names-generator/commits?author=ajwild" title="Code">💻</a></td>
   </tr>
 </table>
 
-<!-- markdownlint-enable -->
+<!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!

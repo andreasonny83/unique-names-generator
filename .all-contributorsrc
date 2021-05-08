@@ -90,16 +90,6 @@
       ]
     },
     {
-      "login": "shianmiin",
-      "name": "Shianmiin",
-      "avatar_url": "https://avatars0.githubusercontent.com/u/11787231?v=4",
-      "profile": "https://github.com/shianmiin",
-      "contributions": [
-        "code",
-        "ideas"
-      ]
-    },
-    {
       "login": "Gusten",
       "name": "Johan Gustafsson",
       "avatar_url": "https://avatars2.githubusercontent.com/u/1529107?v=4",
@@ -107,6 +97,16 @@
       "contributions": [
         "code",
         "ideas"
+      ]
+    },
+    {
+      "login": "ajwild",
+      "name": "Alex Wild",
+      "avatar_url": "https://avatars.githubusercontent.com/u/5101376?v=4",
+      "profile": "https://alex.codes/",
+      "contributions": [
+        "bug",
+        "code"
       ]
     }
   ],
