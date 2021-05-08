@@ -46,7 +46,7 @@ Then, our linter will catch most issues that may exist in your code. You can che
 
 Please consider these guidelines when filing a pull request:
 
-*  Commits follow the [Angular commit convention](https://github.com/angular/angular.js/blob/master/DEVELOPERS.md#-git-commit-guidelines)
+*  Commits follow the [Angular commit convention](https://github.com/angular/angular.js/blob/main/DEVELOPERS.md#-git-commit-guidelines)
 *  Typescript code follows the rules set in the `.prettierrc` file. Run `npm run format` to automatically format all the documents with [Prettier](https://prettier.io).
 *  Features and bug fixes should be covered by test cases
 
@@ -62,4 +62,4 @@ Some things that will increase the chance that your pull request is accepted:
 * Write tests.
 * Write a [good commit message][commit].
 
-[commit]: https://github.com/angular/angular.js/blob/master/DEVELOPERS.md#-git-commit-guidelines
+[commit]: https://github.com/angular/angular.js/blob/main/DEVELOPERS.md#-git-commit-guidelines
