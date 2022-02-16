@@ -30,13 +30,17 @@
   "files": [
     "dist"
   ],
-  "author": "AndreaSonny <andreasonny83@gmail.com>",
-  "license": "MIT",
   "private": false,
+  "author": "Andrea Sonny <andreasonny83@gmail.com>",
+  "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git@github.com:andreasonny83/unique-names-generator.git"
+    "url": "git+https://github.com/andreasonny83/unique-names-generator.git"
   },
+  "bugs": {
+    "url": "https://github.com/andreasonny83/unique-names-generator/issues"
+  },
+  "homepage": "https://github.com/andreasonny83/unique-names-generator#readme",
   "devDependencies": {
     "@babel/core": "^7.13.15",
     "@babel/preset-env": "^7.13.15",
