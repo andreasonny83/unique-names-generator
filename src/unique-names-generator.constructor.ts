@@ -51,8 +51,17 @@ export class UniqueNamesGenerator {
       );
     }
 
+    let seed = this.seed;
+
     return this.dictionaries.slice(0, this.length).reduce((acc: string, curr: string[]) => {
-      const rnd = Math.floor((this.seed ? getFromSeed(this.seed) : Math.random()) * curr.length);
+      let randomFloat;
+      if (seed) {
+        randomFloat = getFromSeed(seed);
+        seed = randomFloat * 4294967296;
+      } else {
+        randomFloat = Math.random();
+      }
+      const rnd = Math.floor(randomFloat * curr.length);
       let word = curr[rnd] || '';
 
       if (this.style === 'lowerCase') {
