@@ -41,7 +41,6 @@ describe('getFromSeed', () => {
     [202020202020, 15],
     [20202020202020, 5],
     [2020202020202011, 15],
-    [202020202020201130, 4],
   ];
   it.each(cases)(`given a seed of %p, should return %p`, (seed, expected) => {
     // Arrange
