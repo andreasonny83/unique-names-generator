@@ -234,11 +234,33 @@ const lowerCaseName: string = uniqueNamesGenerator({
 
 #### seed
 
-Type: `number`
+Type: `number | string`
 
 required: `false`
 
 A seed is used when wanting to deterministically generate a name. As long as the provided seed is the same the generated name will also always be the same.
+
+```typescript
+import { uniqueNamesGenerator, adjectives, colors, animals } from 'unique-names-generator';
+const config: Config = {
+  dictionaries: [adjectives, colors, animals],
+  separator: '-',
+  seed: 120498,
+};
+
+const nameFromSeed: string = uniqueNamesGenerator(config); // continuous-gray-dragonfly
+```
+
+```typescript
+import { uniqueNamesGenerator, adjectives, colors, animals } from 'unique-names-generator';
+const config: Config = {
+  dictionaries: [adjectives, colors, animals],
+  separator: '-',
+  seed: 'you can use strings as a seed',
+};
+
+const nameFromSeed: string = uniqueNamesGenerator(config); // stable-crimson-porpoise
+```
 
 ## Dictionaries available
 

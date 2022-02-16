@@ -12,7 +12,7 @@ export interface Config {
   separator?: string;
   length?: number;
   style?: Style;
-  seed?: number;
+  seed?: number | string;
 }
 
 export class UniqueNamesGenerator {
@@ -20,7 +20,7 @@ export class UniqueNamesGenerator {
   private length: number;
   private separator: string;
   private style: Style;
-  private seed: number;
+  private seed: number | string;
 
   constructor(config: Config) {
     const { length, separator, dictionaries, style, seed } = config;

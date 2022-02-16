@@ -11,6 +11,15 @@ const mulberry32 = (seed: number): number => {
   return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
 };
 
-export const getFromSeed = (seed: number): number => {
+export const getFromSeed = (seed: number | string): number => {
+  if (typeof seed === 'string') {
+    const numberFromString = seed
+      .split('')
+      .map((char: string) => char.charCodeAt(0))
+      .reduce((acc, curr) => acc + curr, 1);
+
+    const numericSeed = Math.floor(Number(numberFromString));
+    return mulberry32(numericSeed);
+  }
   return mulberry32(seed);
 };
