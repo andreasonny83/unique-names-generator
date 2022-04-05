@@ -55,21 +55,17 @@ export class UniqueNamesGenerator {
     }
 
     let seed = this.seed;
-    let dictionaryArray = this.dictionaries.slice(0, this.length);
+    let dictionaryArray = [...this.dictionaries.slice(0, this.length)];
 
-    const getMeRandomElements = function (sourceArray: string[][]): string[][] {
+    if (this.random && this.length <= this.dictionaries.length) {
       const newItems = [];
-      const items = [...sourceArray];
-      for (let i = 0; i <= items.length; i++) {
+      const items = [...this.dictionaries];
+      for (let i = 0; i < this.length; i++) {
         const idx = Math.floor(Math.random() * items.length);
         newItems.push(items[idx]);
         items.splice(idx, 1);
       }
-      return newItems;
-    };
-
-    if (this.random && this.length <= this.dictionaries.length) {
-      dictionaryArray = getMeRandomElements(this.dictionaries);
+      dictionaryArray = newItems;
     }
     return dictionaryArray.reduce((acc: string, curr: string[]) => {
       let randomFloat;
@@ -80,8 +76,8 @@ export class UniqueNamesGenerator {
         randomFloat = Math.random();
       }
       const rnd = Math.floor(randomFloat * curr.length);
-      let word = curr[rnd] || '';
 
+      let word = curr[rnd] || '';
       if (this.style === 'lowerCase') {
         word = word.toLowerCase();
       } else if (this.style === 'capital') {
