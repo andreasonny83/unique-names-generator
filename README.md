@@ -213,6 +213,17 @@ The default value is set to `lowerCase` and it will return a lower case name.
 By setting the value to `upperCase`, the words, will be returned with all the letters in upper case format.
 The `capital` option will capitalize each word of the unique name generated
 
+#### random
+
+Type: `boolean`
+
+required: `false`
+
+Default: `false`
+
+Randomly choosing dictionaries. The lenght is not obligatory, but if set it will choose a given lenght of dictionaries.
+If you have 7 dictionaries and set the length to `3`, it will choose `3` random dictionaries and so on.
+
 ```typescript
 import { uniqueNamesGenerator, adjectives, colors, animals } from 'unique-names-generator';
 
