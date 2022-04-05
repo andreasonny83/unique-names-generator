@@ -57,10 +57,11 @@ export class UniqueNamesGenerator {
     let seed = this.seed;
     let dictionaryArray = this.dictionaries.slice(0, this.length);
 
-    const getMeRandomElements = function (sourceArray: string[][], lenght: number): string[][] {
+    const getMeRandomElements = function (sourceArray: string[][]): string[][] {
       const newItems = [];
       const items = [...sourceArray];
-      for (let i = 0; i < lenght; i++) {
+      console.log(items.length);
+      for (let i = 0; i <= items.length; i++) {
         const idx = Math.floor(Math.random() * items.length);
         newItems.push(items[idx]);
         items.splice(idx, 1);
@@ -69,7 +70,7 @@ export class UniqueNamesGenerator {
     };
 
     if (this.random && this.length <= this.dictionaries.length) {
-      dictionaryArray = getMeRandomElements(dictionaryArray, this.length);
+      dictionaryArray = getMeRandomElements(this.dictionaries);
     }
     return dictionaryArray.reduce((acc: string, curr: string[]) => {
       let randomFloat;

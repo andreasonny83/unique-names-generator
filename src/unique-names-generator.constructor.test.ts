@@ -83,16 +83,16 @@ describe('randomNameGenerator', () => {
   it('generate: should generate a random name and use random dictionaries', () => {
     // Arrange
     const config: Config = {
-      dictionaries: [['a'], ['b'], ['c']],
+      dictionaries: [['a'], ['b'], ['c'], ['d'], ['e']],
       separator: '-',
       random: true,
       length: 3,
     };
-    const expected = /[a-c]-[a-c]-[a-c]/g;
+    const expected = /[a-e]-[a-e]-[a-e]/g;
     // Act
     const uniqueNamesGenerator = new UniqueNamesGenerator(config);
     const response = uniqueNamesGenerator.generate();
-
+    console.log(response);
     // Assert
     expect(expected.test(response)).toBe(true);
   });
