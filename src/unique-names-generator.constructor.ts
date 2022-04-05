@@ -13,6 +13,7 @@ export interface Config {
   length?: number;
   style?: Style;
   seed?: number | string;
+  random?: boolean;
 }
 
 export class UniqueNamesGenerator {
@@ -21,15 +22,17 @@ export class UniqueNamesGenerator {
   private separator: string;
   private style: Style;
   private seed: number | string;
+  private random: boolean;
 
   constructor(config: Config) {
-    const { length, separator, dictionaries, style, seed } = config;
+    const { length, separator, dictionaries, style, seed, random } = config;
 
     this.dictionaries = dictionaries;
     this.separator = separator;
     this.length = length;
     this.style = style;
     this.seed = seed;
+    this.random = random;
   }
 
   public generate(): string {
@@ -52,8 +55,23 @@ export class UniqueNamesGenerator {
     }
 
     let seed = this.seed;
+    let dictionaryArray = this.dictionaries.slice(0, this.length);
 
-    return this.dictionaries.slice(0, this.length).reduce((acc: string, curr: string[]) => {
+    const getMeRandomElements = function (sourceArray: string[][], lenght: number): string[][] {
+      const newItems = [];
+      const items = [...sourceArray];
+      for (let i = 0; i < lenght; i++) {
+        const idx = Math.floor(Math.random() * items.length);
+        newItems.push(items[idx]);
+        items.splice(idx, 1);
+      }
+      return newItems;
+    };
+
+    if (this.random && this.length <= this.dictionaries.length) {
+      dictionaryArray = getMeRandomElements(dictionaryArray, this.length);
+    }
+    return dictionaryArray.reduce((acc: string, curr: string[]) => {
       let randomFloat;
       if (seed) {
         randomFloat = getFromSeed(seed);

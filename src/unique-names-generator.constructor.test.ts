@@ -80,6 +80,23 @@ describe('randomNameGenerator', () => {
     expect(response).toEqual(expected);
   });
 
+  it('generate: should generate a random name and use random dictionaries', () => {
+    // Arrange
+    const config: Config = {
+      dictionaries: [['a'], ['b'], ['c']],
+      separator: '-',
+      random: true,
+      length: 3,
+    };
+    const expected = /[a-c]-[a-c]-[a-c]/g;
+    // Act
+    const uniqueNamesGenerator = new UniqueNamesGenerator(config);
+    const response = uniqueNamesGenerator.generate();
+
+    // Assert
+    expect(expected.test(response)).toBe(true);
+  });
+
   it('generate: should generate a random name given only 2 dictionaries', () => {
     // Arrange
     const config: Config = {
