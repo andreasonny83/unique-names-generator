@@ -60,7 +60,6 @@ export class UniqueNamesGenerator {
     const getMeRandomElements = function (sourceArray: string[][]): string[][] {
       const newItems = [];
       const items = [...sourceArray];
-      console.log(items.length);
       for (let i = 0; i <= items.length; i++) {
         const idx = Math.floor(Math.random() * items.length);
         newItems.push(items[idx]);

@@ -92,7 +92,6 @@ describe('randomNameGenerator', () => {
     // Act
     const uniqueNamesGenerator = new UniqueNamesGenerator(config);
     const response = uniqueNamesGenerator.generate();
-    console.log(response);
     // Assert
     expect(expected.test(response)).toBe(true);
   });
