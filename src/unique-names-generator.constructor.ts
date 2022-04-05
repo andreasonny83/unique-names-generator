@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-this-alias */
 // Copyright (c) 2018-2022 AndreaSonny <andreasonny83@gmail.com> (https://github.com/andreasonny83)
 //
 // This software is released under the MIT License.
@@ -14,6 +15,7 @@ export interface Config {
   style?: Style;
   seed?: number | string;
   random?: boolean;
+  maxLength?: number;
 }
 
 export class UniqueNamesGenerator {
@@ -23,9 +25,10 @@ export class UniqueNamesGenerator {
   private style: Style;
   private seed: number | string;
   private random: boolean;
+  private maxLength: number;
 
   constructor(config: Config) {
-    const { length, separator, dictionaries, style, seed, random } = config;
+    const { length, separator, dictionaries, style, seed, random, maxLength } = config;
 
     this.dictionaries = dictionaries;
     this.separator = separator;
@@ -33,6 +36,7 @@ export class UniqueNamesGenerator {
     this.style = style;
     this.seed = seed;
     this.random = random;
+    this.maxLength = maxLength;
   }
 
   public generate(): string {
@@ -45,6 +49,10 @@ export class UniqueNamesGenerator {
 
     if (this.length <= 0) {
       throw new Error('Invalid length provided');
+    }
+
+    if (this.maxLength <= 0) {
+      throw new Error('Invalid maxLength provided');
     }
 
     if (this.length > this.dictionaries.length) {
@@ -67,7 +75,7 @@ export class UniqueNamesGenerator {
       }
       dictionaryArray = newItems;
     }
-    return dictionaryArray.reduce((acc: string, curr: string[]) => {
+    let toReturn = dictionaryArray.reduce((acc: string, curr: string[]) => {
       let randomFloat;
       if (seed) {
         randomFloat = getFromSeed(seed);
@@ -89,5 +97,10 @@ export class UniqueNamesGenerator {
 
       return acc ? `${acc}${this.separator}${word}` : `${word}`;
     }, '');
+
+    if (this.maxLength && toReturn.length > this.maxLength) {
+      toReturn = toReturn.substring(0, this.maxLength);
+    }
+    return toReturn;
   }
 }

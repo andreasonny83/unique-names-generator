@@ -224,6 +224,16 @@ Default: `false`
 Randomly choosing dictionaries. The lenght is not obligatory, but if set it will choose a given lenght of dictionaries.
 If you have 7 dictionaries and set the length to `3`, it will choose `3` random dictionaries and so on.
 
+#### maxLength
+
+Type: `number`
+
+required: `false`
+
+Default: `null`
+
+Maximum length of the unique name generated.
+
 ```typescript
 import { uniqueNamesGenerator, adjectives, colors, animals } from 'unique-names-generator';
 
