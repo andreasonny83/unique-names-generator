@@ -70,11 +70,9 @@ export class UniqueNamesGenerator {
     }
 
     let seed = this.seed;
-    let dictionaryArray = [...this.dictionaries.slice(0, this.length)];
-
-    if (this.random) {
-      dictionaryArray = this.shuffle(this.dictionaries).slice(0, this.length);
-    }
+    const dictionaryArray = this.random
+      ? this.shuffle(this.dictionaries).slice(0, this.length)
+      : [...this.dictionaries.slice(0, this.length)];
 
     return dictionaryArray.reduce((acc: string, curr: string[]) => {
       let randomFloat: number;
