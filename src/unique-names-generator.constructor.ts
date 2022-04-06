@@ -15,7 +15,6 @@ export interface Config {
   style?: Style;
   seed?: number | string;
   random?: boolean;
-  maxLength?: number;
 }
 
 export class UniqueNamesGenerator {
@@ -25,10 +24,9 @@ export class UniqueNamesGenerator {
   private style: Style;
   private seed: number | string;
   private random: boolean;
-  private maxLength: number;
 
   constructor(config: Config) {
-    const { length, separator, dictionaries, style, seed, random, maxLength } = config;
+    const { length, separator, dictionaries, style, seed, random } = config;
 
     this.dictionaries = dictionaries;
     this.separator = separator;
@@ -36,7 +34,20 @@ export class UniqueNamesGenerator {
     this.style = style;
     this.seed = seed;
     this.random = random;
-    this.maxLength = maxLength;
+  }
+
+  private shuffle(array: string[][]) {
+    let currentIndex = array.length;
+    let randomIndex: number;
+
+    while (currentIndex != 0) {
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+
+      [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
+    }
+
+    return array;
   }
 
   public generate(): string {
@@ -51,10 +62,6 @@ export class UniqueNamesGenerator {
       throw new Error('Invalid length provided');
     }
 
-    if (this.maxLength <= 0) {
-      throw new Error('Invalid maxLength provided');
-    }
-
     if (this.length > this.dictionaries.length) {
       throw new Error(
         'The length cannot be bigger than the number of dictionaries.\n' +
@@ -65,18 +72,12 @@ export class UniqueNamesGenerator {
     let seed = this.seed;
     let dictionaryArray = [...this.dictionaries.slice(0, this.length)];
 
-    if (this.random && this.length <= this.dictionaries.length) {
-      const newItems = [];
-      const items = [...this.dictionaries];
-      for (let i = 0; i < this.length; i++) {
-        const idx = Math.floor(Math.random() * items.length);
-        newItems.push(items[idx]);
-        items.splice(idx, 1);
-      }
-      dictionaryArray = newItems;
+    if (this.random) {
+      dictionaryArray = this.shuffle(this.dictionaries).slice(0, this.length);
     }
-    let toReturn = dictionaryArray.reduce((acc: string, curr: string[]) => {
-      let randomFloat;
+
+    return dictionaryArray.reduce((acc: string, curr: string[]) => {
+      let randomFloat: number;
       if (seed) {
         randomFloat = getFromSeed(seed);
         seed = randomFloat * 4294967296;
@@ -97,10 +98,5 @@ export class UniqueNamesGenerator {
 
       return acc ? `${acc}${this.separator}${word}` : `${word}`;
     }, '');
-
-    if (this.maxLength && toReturn.length > this.maxLength) {
-      toReturn = toReturn.substring(0, this.maxLength);
-    }
-    return toReturn;
   }
 }

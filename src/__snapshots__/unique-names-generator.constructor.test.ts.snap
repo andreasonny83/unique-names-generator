@@ -2,8 +2,6 @@
 
 exports[`randomNameGenerator should throw an error when the provided length is invalid 1`] = `"Invalid length provided"`;
 
-exports[`randomNameGenerator should throw an error when the provided maxLength is invalid 1`] = `"Invalid maxLength provided"`;
-
 exports[`randomNameGenerator should throw an error when there are no dictionaries 1`] = `"Cannot find any dictionary. Please provide at least one, or leave the \\"dictionary\\" field empty in the config object"`;
 
 exports[`randomNameGenerator should throw an error when there are no enough dictionaries 1`] = `

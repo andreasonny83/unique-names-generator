@@ -96,28 +96,6 @@ describe('randomNameGenerator', () => {
     expect(expected.test(response)).toBe(true);
   });
 
-  it('generate: should generate a random name with max lenght', () => {
-    // Arrange
-    const config: Config = {
-      dictionaries: [
-        ['11111111132423534534534'],
-        ['1423425345345'],
-        ['5435242425234'],
-        ['5345434534553'],
-        ['53535345353535345'],
-      ],
-      separator: '-',
-      random: true,
-      length: 1,
-      maxLength: 20,
-    };
-    // Act
-    const uniqueNamesGenerator = new UniqueNamesGenerator(config);
-    const response = uniqueNamesGenerator.generate();
-    // Assert
-    expect(response.length).toBeLessThanOrEqual(20);
-  });
-
   it('generate: should generate a random name given only 2 dictionaries', () => {
     // Arrange
     const config: Config = {
@@ -295,23 +273,6 @@ describe('randomNameGenerator', () => {
       dictionaries: [],
       length: -1,
       separator: '_',
-    };
-
-    // Act
-    const uniqueNamesGenerator = new UniqueNamesGenerator(config);
-    const expected = (): unknown => uniqueNamesGenerator.generate();
-
-    // Assert
-    expect(() => expected()).toThrowErrorMatchingSnapshot();
-  });
-
-  it('should throw an error when the provided maxLength is invalid', () => {
-    // Arrange
-    const config: Config = {
-      dictionaries: [],
-      length: 1,
-      separator: '_',
-      maxLength: -1,
     };
 
     // Act
