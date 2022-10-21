@@ -60,7 +60,7 @@ describe('unique-names-generator', () => {
   it('should require a dictionary option', () => {
     // Assert
     expect(() => (uniqueNamesGenerator as () => string)()).toThrowErrorMatchingInlineSnapshot(
-      `"A \\"dictionaries\\" array must be provided. This is a breaking change introduced starting from Unique Name Generator v4. Read more about the breaking change here: https://github.com/andreasonny83/unique-names-generator#migration-guide"`,
+      `"A "dictionaries" array must be provided. This is a breaking change introduced starting from Unique Name Generator v4. Read more about the breaking change here: https://github.com/andreasonny83/unique-names-generator#migration-guide"`,
     );
   });
 
