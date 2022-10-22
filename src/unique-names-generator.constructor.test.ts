@@ -223,9 +223,7 @@ describe('randomNameGenerator', () => {
 
   it('should throw an error when there are no dictionaries', () => {
     // Arrange
-    const config = {
-      dictionaries: undefined,
-    } as Config;
+    const config = {} as Config;
 
     // Act
     const uniqueNamesGenerator = new UniqueNamesGenerator(config);

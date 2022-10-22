@@ -41,12 +41,6 @@ describe('getFromSeed', () => {
     [202020202020, 15],
     [20202020202020, 5],
     [2020202020202011, 15],
-    ['string', 17],
-    ['just a string', 14],
-    ['this is a very long string used to generate a unique seed', 3],
-    ['this is another and different very long string used to generate a unique seed', 4],
-    ['another very long string used to generate a unique seed', 14],
-    ['a shorter string used to generate a unique seed', 17],
   ];
   it.each(cases)(`given a seed of %p, should return %p`, (seed, expected) => {
     // Arrange
