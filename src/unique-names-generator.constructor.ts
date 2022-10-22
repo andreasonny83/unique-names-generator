@@ -37,7 +37,6 @@ export class UniqueNamesGenerator {
   #convertSeed(seed: number | string): number {
     if (typeof seed === 'string') {
       const numberFromString = seed.split('').reduce((acc, curr) => acc + curr.charCodeAt(0), 1);
-      console.warn(numberFromString);
 
       const numericSeed = Math.floor(Number(numberFromString));
       return numericSeed;
