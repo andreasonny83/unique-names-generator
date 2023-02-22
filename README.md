@@ -61,6 +61,7 @@ If you want to migrate, from an older version of the library to v4, please read 
       - [Countries](#countries)
       - [Names](#names)
       - [Languages](#languages)
+      - [Positive adjectives](#positive-adjectives)
       - [Star Wars](#star-wars)
     - [Default dictionaries](#default-dictionaries)
     - [Custom dictionaries](#custom-dictionaries)
@@ -350,6 +351,19 @@ const config: Config = {
 }
 
 const characterName: string = uniqueNamesGenerator(config); // polish
+```
+#### Positive adjectives
+
+A list of 2,005 positive adjectives ready for you to use
+
+```typescript
+import { uniqueNamesGenerator, Config, positiveAdjectives } from 'unique-names-generator';
+
+const config: Config = {
+  dictionaries: [positiveAdjectives]
+}
+
+const characterName: string = uniqueNamesGenerator(config); // witty
 ```
 
 #### Star Wars
