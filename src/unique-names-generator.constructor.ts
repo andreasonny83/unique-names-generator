@@ -36,10 +36,16 @@ export class UniqueNamesGenerator {
 
   #convertSeed(seed: number | string): number {
     if (typeof seed === 'string') {
-      const numberFromString = seed.split('').reduce((acc, curr) => acc + curr.charCodeAt(0), 1);
-
-      const numericSeed = Math.floor(Number(numberFromString));
-      return numericSeed;
+      let hash = 0;
+      if (seed.length === 0) return hash;
+      const maxSafeLength = 16;
+      for (let i = 0; i < Math.min(seed.length, maxSafeLength); i++) {
+        const char = seed.charCodeAt(i);
+        // prettier-ignore
+        hash = ((hash << 5) - hash) + char;
+        hash |= 0; // Convert to 32bit integer
+      }
+      return Math.abs(hash);
     }
     return seed;
   }
