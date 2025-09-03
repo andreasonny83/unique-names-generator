@@ -67,3 +67,6 @@ temp/
 .rts2_cache_cjs
 .rts2_cache_es
 .rts2_cache_umd
+ # Claude Code and Serena MCP
+.claude/
+.serena/
