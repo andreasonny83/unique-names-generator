@@ -7,12 +7,15 @@ import { getFromSeed } from './seed';
 
 type Style = 'lowerCase' | 'upperCase' | 'capital';
 
+export type Language = 'en' | 'zh-cn';
+
 export interface Config {
   dictionaries: string[][];
   separator?: string;
   length?: number;
   style?: Style;
   seed?: number | string;
+  language?: Language | Language[];
 }
 
 export class UniqueNamesGenerator {
@@ -30,11 +33,11 @@ export class UniqueNamesGenerator {
     this.#separator = separator;
     this.#length = length;
     this.#style = style;
-    this.#seed = this.#convertSeed(seed);
+    this.#seed = this.convertSeed(seed);
     this.#tmpSeed = this.#seed;
   }
 
-  #convertSeed(seed: number | string): number {
+  private convertSeed(seed: number | string): number {
     if (typeof seed === 'string') {
       const numberFromString = seed.split('').reduce((acc, curr) => acc + curr.charCodeAt(0), 1);
 
@@ -44,7 +47,7 @@ export class UniqueNamesGenerator {
     return seed;
   }
 
-  #verify() {
+  private verify() {
     if (!this.#dictionaries) {
       throw new Error(
         'Cannot find any dictionary. Please provide at least one, or leave ' +
@@ -66,7 +69,7 @@ export class UniqueNamesGenerator {
     }
   }
 
-  #format(word: string): string {
+  private format(word: string): string {
     if (this.#style === 'lowerCase') {
       return word.toLowerCase();
     }
@@ -80,7 +83,7 @@ export class UniqueNamesGenerator {
     return word;
   }
 
-  #getRandomFloat(): number {
+  private getRandomFloat(): number {
     if (this.#seed) {
       const res = getFromSeed(this.#tmpSeed);
       this.#tmpSeed = res * 4294967296;
@@ -89,18 +92,18 @@ export class UniqueNamesGenerator {
     return Math.random();
   }
 
-  #resetTmpSeed() {
+  private resetTmpSeed() {
     this.#tmpSeed = this.#seed;
   }
 
   public generate(): string {
-    this.#verify();
-    this.#resetTmpSeed();
+    this.verify();
+    this.resetTmpSeed();
 
     return this.#dictionaries.slice(0, this.#length).reduce((acc: string, curr: string[]) => {
-      const randomFloat = this.#getRandomFloat();
+      const randomFloat = this.getRandomFloat();
       const rnd = Math.floor(randomFloat * curr.length);
-      const word = this.#format(curr[rnd] || '');
+      const word = this.format(curr[rnd] || '');
 
       return acc ? `${acc}${this.#separator}${word}` : `${word}`;
     }, '');
